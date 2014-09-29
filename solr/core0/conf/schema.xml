@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema name="main" version="1.0">
+    <types>
+        <fieldType name="uuid" class="solr.UUIDField" indexed="true" stored="true" multiValued="false" required="true"/>
+        <fieldType name="date" class="solr.TrieDateField" indexed="false" stored="true"/>
+        <fieldType name="string" class="solr.StrField" indexed="false" stored="true"/>
+        <fieldType name="multi_text" class="solr.TextField" indexed="true" stored="true" multiValued="true" omitNorms="false"
+                   termVectors="true" termPositions="true"/>
+        <fieldType name="text" class="solr.TextField" indexed="true" stored="true" multiValued="false" omitNorms="false"
+                   termVectors="true" termPositions="true"/>
+    </types>
+    <!--todo: ensure timezone parameters set correctly-->
+    <!--consult field properties by use case to determine which field attributes to set-->
+    <fields>
+        <field name="id" type="uuid"/>
+        <field name="date_created" type="date"/>
+        <field name="date_completed" type="date"/>
+        <field name="date_revised" type="date"/>
+        <field name="pmid" type="string"/>
+        <field name="abstract_text" type="multi_text"/>
+        <field name="article_title" type="text"/>
+        <field name="author_list" type="multi_text"/>
+        <field name="journal_issue" type="text"/>
+        <field name="journal_title" type="text"/>
+        <field name="article_date" type="date"/>
+        <field name="gene_symbol_list" type="multi_text"/>
+        <field name="keyword_list" type="multi_text"/>
+        <field name="mesh_heading_list" type="multi_text"/>
+        <field name="chemical_list" type="multi_text"/>
+
+        <!--todo: dynamic fields-->
+
+    </fields>
+
+    <uniqueKey>id</uniqueKey>
+
+    <solrQueryParser defaultOperator="AND"/>
+
+    <!--todo: query parser default operator-->
+    <!--todo: copy fields-->
+</schema>

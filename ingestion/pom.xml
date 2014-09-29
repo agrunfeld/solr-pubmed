@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>project</artifactId>
+        <groupId>org.gsc</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ingestion</artifactId>
+    <properties>
+        <solr.port>8983</solr.port>
+        <solr.version>4.10.0</solr.version>
+        <jetty.version>9.2.2.v20140723</jetty.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <jaxb2.version>0.9.0</jaxb2.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <!--SLF4J LOG4J-12 Binding-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!--JCL 1.1.1 implemented over SLF4J-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!--JUL to SLF4J bridge-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!--Wrapper of SLF4J and a few supplementary logging classes-->
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-log</artifactId>
+            <version>0.14.3</version>
+        </dependency>
+        <!--Maven JAXB 2.x Plugin-->
+        <dependency>
+            <groupId>org.jvnet.jaxb2.maven2</groupId>
+            <artifactId>maven-jaxb2-plugin</artifactId>
+            <version>${jaxb2.version}</version>
+        </dependency>
+        <!--Solrj is a java client to access solr-->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>4.10.0</version>
+        </dependency>
+        <!--regression testing framework-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+        <!--Mock objects library for java-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+        </dependency>
+        <!--Google's core and expanded libraries. Includes utility classes, collections, io classes, etc-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+        <!--Date and time library to replace JDK date handling-->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.4</version>
+        </dependency>
+    </dependencies>
+    <!--todo: better integration testing, follow this guide http://docs.codehaus.org/display/MAVENUSER/Maven+and+Integration+Testing-->
+    <build>
+        <plugins>
+            <!--maven compiler configuration for setting Java version-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <!--maven task for launching solr-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>org.eclipse.jetty.runner.Runner</mainClass>
+                    <arguments>
+                        <argument>--port</argument>
+                        <argument>${solr.port}</argument>
+                        <argument>${basedir}/libs/solr-${solr.version}.war</argument>
+                    </arguments>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>log4j.configuration</key>
+                            <value>file:${basedir}/resources/log4j.properties</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>solr.solr.home</key>
+                            <value>${basedir}/solr</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <!--used to generate POJOs from document type definitions (DTDs)-->
+            <!--<plugin>-->
+            <!--<groupId>org.jvnet.jaxb2.maven2</groupId>-->
+            <!--<artifactId>maven-jaxb2-plugin</artifactId>-->
+            <!--<version>${jaxb2.version}</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<goals>-->
+            <!--<goal>generate</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--&lt;!&ndash;  if you want to put DTD somewhere else-->
+            <!--<schemaDirectory>src/main/jaxb</schemaDirectory>-->
+            <!--&ndash;&gt;-->
+            <!--&lt;!&ndash;<extension>true</extension>&ndash;&gt;-->
+            <!--<schemaLanguage>DTD</schemaLanguage>-->
+            <!--<schemaIncludes>-->
+            <!--<value>schema/*.dtd</value>-->
+            <!--</schemaIncludes>-->
+            <!--<bindingIncludes>-->
+            <!--<value>bindings/*.jaxb</value>-->
+            <!--</bindingIncludes>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+</project>

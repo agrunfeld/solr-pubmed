@@ -1,0 +1,45 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+
+
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
+{% endblock %}
+
+{% block title %}
+Test
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='style.css')}}">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!--left-->
+    <div class="col-sm-3">
+        {% include 'sidebar.html' %}
+    </div>
+    <!--center-->
+    <div class="col-sm-7">
+        {% if results %}
+            {% include 'results.html' %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<!--<script src="{{url_for('.static', filename='myscripts.js')}}"></script>-->
+{{super()}}
+{% endblock %}
+

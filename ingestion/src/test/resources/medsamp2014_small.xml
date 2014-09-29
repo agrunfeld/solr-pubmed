@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MedlineCitationSet PUBLIC "-//NLM//DTD Medline Citation, 1st January, 2014//EN" "http://www.nlm.nih.gov/databases/dtd/nlmmedlinecitationset_140101.dtd">
+<MedlineCitationSet>
+    <MedlineCitation Owner="NLM" Status="MEDLINE">
+        <PMID Version="1">10540283</PMID>
+        <DateCreated>
+            <Year>1999</Year>
+            <Month>12</Month>
+            <Day>17</Day>
+        </DateCreated>
+        <DateCompleted>
+            <Year>1999</Year>
+            <Month>12</Month>
+            <Day>17</Day>
+        </DateCompleted>
+        <DateRevised>
+            <Year>2006</Year>
+            <Month>11</Month>
+            <Day>15</Day>
+        </DateRevised>
+        <Article PubModel="Print">
+            <Journal>
+                <ISSN IssnType="Print">0950-382X</ISSN>
+                <JournalIssue CitedMedium="Print">
+                    <Volume>34</Volume>
+                    <Issue>1</Issue>
+                    <PubDate>
+                        <Year>1999</Year>
+                        <Month>Oct</Month>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Molecular microbiology</Title>
+                <ISOAbbreviation>Mol. Microbiol.</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Transcription regulation of the nir gene cluster encoding nitrite reductase of Paracoccus denitrificans involves NNR and NirI, a novel type of membrane protein.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>24-36</MedlinePgn>
+            </Pagination>
+            <Abstract>
+                <AbstractText>The nirIX gene cluster of Paracoccus denitrificans is located between the nir and nor gene clusters encoding nitrite and nitric oxide reductases respectively. The NirI sequence corresponds to that of a membrane-bound protein with six transmembrane helices, a large periplasmic domain and cysteine-rich cytoplasmic domains that resemble the binding sites of [4Fe-4S] clusters in many ferredoxin-like proteins. NirX is soluble and apparently located in the periplasm, as judged by the predicted signal sequence. NirI and NirX are homologues of NosR and NosX, proteins involved in regulation of the expression of the nos gene cluster encoding nitrous oxide reductase in Pseudomonas stutzeri and Sinorhizobium meliloti. Analysis of a NirI-deficient mutant strain revealed that NirI is involved in transcription activation of the nir gene cluster in response to oxygen limitation and the presence of N-oxides. The NirX-deficient mutant transiently accumulated nitrite in the growth medium, but it had a final growth yield similar to that of the wild type. Transcription of the nirIX gene cluster itself was controlled by NNR, a member of the family of FNR-like transcriptional activators. An NNR binding sequence is located in the middle of the intergenic region between the nirI and nirS genes with its centre located at position -41.5 relative to the transcription start sites of both genes. Attempts to complement the NirI mutation via cloning of the nirIX gene cluster on a broad-host-range vector were unsuccessful, the ability to express nitrite reductase being restored only when the nirIX gene cluster was reintegrated into the chromosome of the NirI-deficient mutant via homologous recombination in such a way that the wild-type nirI gene was present directly upstream of the nir operon.</AbstractText>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Saunders</LastName>
+                    <ForeName>N F</ForeName>
+                    <Initials>NF</Initials>
+                    <Affiliation>Department of Molecular Cell Physiology, Faculty of Biology, BioCentrum Amsterdam, Vrije Universiteit, De Boelelaan 1087, NL-1081 HV Amsterdam, The Netherlands.</Affiliation>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Houben</LastName>
+                    <ForeName>E N</ForeName>
+                    <Initials>EN</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Koefoed</LastName>
+                    <ForeName>S</ForeName>
+                    <Initials>S</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>de Weert</LastName>
+                    <ForeName>S</ForeName>
+                    <Initials>S</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Reijnders</LastName>
+                    <ForeName>W N</ForeName>
+                    <Initials>WN</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Westerhoff</LastName>
+                    <ForeName>H V</ForeName>
+                    <Initials>HV</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>De Boer</LastName>
+                    <ForeName>A P</ForeName>
+                    <Initials>AP</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Van Spanning</LastName>
+                    <ForeName>R J</ForeName>
+                    <Initials>RJ</Initials>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <DataBankList CompleteYN="Y">
+                <DataBank>
+                    <DataBankName>GENBANK</DataBankName>
+                    <AccessionNumberList>
+                        <AccessionNumber>AF005358</AccessionNumber>
+                        <AccessionNumber>U47133</AccessionNumber>
+                        <AccessionNumber>U94899</AccessionNumber>
+                    </AccessionNumberList>
+                </DataBank>
+                <DataBank>
+                    <DataBankName>PDB</DataBankName>
+                    <AccessionNumberList>
+                        <AccessionNumber>P33943</AccessionNumber>
+                    </AccessionNumberList>
+                </DataBank>
+            </DataBankList>
+            <PublicationTypeList>
+                <PublicationType>Journal Article</PublicationType>
+                <PublicationType>Research Support, Non-U.S. Gov't</PublicationType>
+            </PublicationTypeList>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>ENGLAND</Country>
+            <MedlineTA>Mol Microbiol</MedlineTA>
+            <NlmUniqueID>8712028</NlmUniqueID>
+            <ISSNLinking>0950-382X</ISSNLinking>
+        </MedlineJournalInfo>
+        <ChemicalList>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Bacterial Proteins</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>DNA-Binding Proteins</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Membrane Proteins</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>NNR protein, Paracoccus denitrificans</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>NirI protein, Paracoccus denitrificans</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>NirX protein, Paracoccus denitrificans</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Transcription Factors</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>EC 1.7.-</RegistryNumber>
+                <NameOfSubstance>Nitrite Reductases</NameOfSubstance>
+            </Chemical>
+        </ChemicalList>
+        <CitationSubset>IM</CitationSubset>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Amino Acid Sequence</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="Y">Bacterial Proteins</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Base Sequence</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="Y">DNA-Binding Proteins</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Gene Expression Regulation, Bacterial</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Genetic Complementation Test</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Membrane Proteins</DescriptorName>
+                <QualifierName MajorTopicYN="N">chemistry</QualifierName>
+                <QualifierName MajorTopicYN="Y">genetics</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Molecular Sequence Data</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Multigene Family</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Mutation</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Nitrite Reductases</DescriptorName>
+                <QualifierName MajorTopicYN="Y">genetics</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Paracoccus denitrificans</DescriptorName>
+                <QualifierName MajorTopicYN="Y">genetics</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Protein Structure, Secondary</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Sequence Homology, Amino Acid</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Transcription Factors</DescriptorName>
+                <QualifierName MajorTopicYN="Y">genetics</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="Y">Transcription, Genetic</DescriptorName>
+            </MeshHeading>
+        </MeshHeadingList>
+    </MedlineCitation>
+    <MedlineCitation Owner="NLM" Status="MEDLINE">
+        <PMID Version="1">10612833</PMID>
+        <DateCreated>
+            <Year>2000</Year>
+            <Month>01</Month>
+            <Day>20</Day>
+        </DateCreated>
+        <DateCompleted>
+            <Year>2000</Year>
+            <Month>01</Month>
+            <Day>20</Day>
+        </DateCompleted>
+        <DateRevised>
+            <Year>2012</Year>
+            <Month>07</Month>
+            <Day>11</Day>
+        </DateRevised>
+        <Article PubModel="Print">
+            <Journal>
+                <ISSN IssnType="Electronic">1098-1004</ISSN>
+                <JournalIssue CitedMedium="Internet">
+                    <Volume>15</Volume>
+                    <Issue>1</Issue>
+                    <PubDate>
+                        <Year>2000</Year>
+                        <Month>Jan</Month>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Human mutation</Title>
+                <ISOAbbreviation>Hum. Mutat.</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Erratum: analysis of DNA elements that modulate myosin VIIa expression in humans.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>114-5</MedlinePgn>
+            </Pagination>
+            <Abstract>
+                <AbstractText>Usher syndromeIb (USH1B), an autosomal recessive disorder caused by mutations in myosin VIIa (MYO7A), is characterized by congenital profound hearing loss, vestibular abnormalities and retinitis pigmentosa. Promoter elements in the 5 kb upstream of the translation start were identified using adult retinal pigment epithelium cells (ARPE-19) as a model system. A 160 bp minimal promoter within the first intron was active in ARPE-19 cells, but not in HeLa cells that do not express MYO7A. A 100 bp sequence, 5' of the first exon, and repeated with 90% homology within the first intron, appeared to modulate expression in both cell lines. Segments containing these elements were screened by heteroduplex analysis. No heteroduplexes were detected in the minimal promoter, suggesting that this sequence is conserved. A -2568 A&gt;T transversion in the 5' 100 bp repeat, eliminating a CCAAT element, was found only in USH1B patients. However, in all 5 families, -2568 A&gt;T was in cis with the same missense mutation in the myosin VIIa tail (Arg1240Gln), and 4 of the 5 families were Dutch. These observations suggest either 1) linkage disequilibrium or 2)that a combination of a promoter mutation with a less active myosin VIIa protein results in USH1B.</AbstractText>
+                <CopyrightInformation>Copyright 2000 Wiley-Liss, Inc.</CopyrightInformation>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Orten</LastName>
+                    <ForeName>D J</ForeName>
+                    <Initials>DJ</Initials>
+                    <Affiliation>Center for Hereditary Communication Disorders, Boys Town National Research Hospital Omaha, NE, USA. ortend@boystown.org</Affiliation>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Weston</LastName>
+                    <ForeName>M D</ForeName>
+                    <Initials>MD</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Kelley</LastName>
+                    <ForeName>P M</ForeName>
+                    <Initials>PM</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Cremers</LastName>
+                    <ForeName>C W</ForeName>
+                    <Initials>CW</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Wagenaar</LastName>
+                    <ForeName>M</ForeName>
+                    <Initials>M</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Jacobson</LastName>
+                    <ForeName>S G</ForeName>
+                    <Initials>SG</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Kimberling</LastName>
+                    <ForeName>W J</ForeName>
+                    <Initials>WJ</Initials>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <GrantList CompleteYN="N">
+                <Grant>
+                    <GrantID>DC00677</GrantID>
+                    <Acronym>DC</Acronym>
+                    <Agency>NIDCD NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>DC00982</GrantID>
+                    <Acronym>DC</Acronym>
+                    <Agency>NIDCD NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>DC03351</GrantID>
+                    <Acronym>DC</Acronym>
+                    <Agency>NIDCD NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+            </GrantList>
+            <PublicationTypeList>
+                <PublicationType>Corrected and Republished Article</PublicationType>
+                <PublicationType>Journal Article</PublicationType>
+                <PublicationType>Research Support, Non-U.S. Gov't</PublicationType>
+                <PublicationType>Research Support, U.S. Gov't, P.H.S.</PublicationType>
+            </PublicationTypeList>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>UNITED STATES</Country>
+            <MedlineTA>Hum Mutat</MedlineTA>
+            <NlmUniqueID>9215429</NlmUniqueID>
+            <ISSNLinking>1059-7794</ISSNLinking>
+        </MedlineJournalInfo>
+        <ChemicalList>
+            <Chemical>
+                <RegistryNumber>EC 3.6.4.1</RegistryNumber>
+                <NameOfSubstance>Myosins</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>EC 3.6.4.1</RegistryNumber>
+                <NameOfSubstance>myosin VIIa</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>EC 3.6.4.2</RegistryNumber>
+                <NameOfSubstance>Dyneins</NameOfSubstance>
+            </Chemical>
+        </ChemicalList>
+        <CitationSubset>IM</CitationSubset>
+        <CommentsCorrectionsList>
+            <CommentsCorrections RefType="RepublishedFrom">
+                <RefSource>Hum Mutat. 1999 Oct;14(4):354</RefSource>
+                <PMID Version="1">10502787</PMID>
+            </CommentsCorrections>
+        </CommentsCorrectionsList>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Amino Acid Substitution</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Cell Line</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Dyneins</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="Y">Gene Expression Regulation</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">HeLa Cells</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Hearing Loss, Sensorineural</DescriptorName>
+                <QualifierName MajorTopicYN="Y">genetics</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Humans</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Linkage Disequilibrium</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Mutation, Missense</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Myosins</DescriptorName>
+                <QualifierName MajorTopicYN="N">biosynthesis</QualifierName>
+                <QualifierName MajorTopicYN="Y">genetics</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Pedigree</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Pigment Epithelium of Eye</DescriptorName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Polymerase Chain Reaction</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Polymorphism, Restriction Fragment Length</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="Y">Promoter Regions, Genetic</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Retinitis Pigmentosa</DescriptorName>
+                <QualifierName MajorTopicYN="Y">genetics</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Syndrome</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Vestibular Diseases</DescriptorName>
+                <QualifierName MajorTopicYN="Y">genetics</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+        </MeshHeadingList>
+    </MedlineCitation>
+    <MedlineCitation Owner="NLM" Status="MEDLINE">
+        <PMID Version="1">10737756</PMID>
+        <DateCreated>
+            <Year>2000</Year>
+            <Month>04</Month>
+            <Day>13</Day>
+        </DateCreated>
+        <DateCompleted>
+            <Year>2000</Year>
+            <Month>04</Month>
+            <Day>13</Day>
+        </DateCompleted>
+        <DateRevised>
+            <Year>2004</Year>
+            <Month>11</Month>
+            <Day>17</Day>
+        </DateRevised>
+        <Article PubModel="Print">
+            <Journal>
+                <ISSN IssnType="Print">0022-2623</ISSN>
+                <JournalIssue CitedMedium="Print">
+                    <Volume>43</Volume>
+                    <Issue>6</Issue>
+                    <PubDate>
+                        <Year>2000</Year>
+                        <Month>Mar</Month>
+                        <Day>23</Day>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Journal of medicinal chemistry</Title>
+                <ISOAbbreviation>J. Med. Chem.</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Phosphorylated morpholine acetal human neurokinin-1 receptor antagonists as water-soluble prodrugs.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>1234-41</MedlinePgn>
+            </Pagination>
+            <Abstract>
+                <AbstractText>The regioselective dibenzylphosphorylation of 2 followed by catalytic reduction in the presence of N-methyl-D-glucamine afforded 2-(S)-(1-(R)-(3, 5-bis(trifluoromethyl)phenyl)ethoxy)-3-(S)-(4-fluoro)phenyl-4-(5-(2- phosphoryl-3-oxo-4H,-1,2,4-triazolo)methylmorpholine, bis(N-methyl-D-glucamine) salt, 11. Incubation of 11 in rat, dog, and human plasma and in human hepatic subcellular fractions in vitro indicated that conversion to 2 would be expected to occur in vivo most readily in humans during hepatic circulation. Conversion of 11 to 2 occurred rapidly in vivo in the rat and dog with the levels of 11 being undetectable within 5 min after 1 and 8 mg/kg doses iv in the rat and within 15 min after 0.5, 2, and 32 mg/kg doses iv in the dog. Compound 11 has a 10-fold lower affinity for the human NK-1 receptor as compared to 2, but it is functionally equivalent to 2 in preclinical models of NK-1-mediated inflammation in the guinea pig and cisplatin-induced emesis in the ferret, indicating that 11 acts as a prodrug of 2. Based in part on these data, 11 was identified as a novel, water-soluble prodrug of the clinical candidate 2 suitable for intravenous administration in humans.</AbstractText>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Hale</LastName>
+                    <ForeName>J J</ForeName>
+                    <Initials>JJ</Initials>
+                    <Affiliation>Merck Research Laboratories, P.O. Box 2000, Rahway, New Jersey 07065, and Merck, Sharp &amp; Dohme, Neuroscience Research Centre, Terlings Park, Eastwick Road, Harlow, Essex CM20 2QR, U.K. jeffrey_hale@merck.com</Affiliation>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Mills</LastName>
+                    <ForeName>S G</ForeName>
+                    <Initials>SG</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>MacCoss</LastName>
+                    <ForeName>M</ForeName>
+                    <Initials>M</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Dorn</LastName>
+                    <ForeName>C P</ForeName>
+                    <Initials>CP</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Finke</LastName>
+                    <ForeName>P E</ForeName>
+                    <Initials>PE</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Budhu</LastName>
+                    <ForeName>R J</ForeName>
+                    <Initials>RJ</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Reamer</LastName>
+                    <ForeName>R A</ForeName>
+                    <Initials>RA</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Huskey</LastName>
+                    <ForeName>S E</ForeName>
+                    <Initials>SE</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Luffer-Atlas</LastName>
+                    <ForeName>D</ForeName>
+                    <Initials>D</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Dean</LastName>
+                    <ForeName>B J</ForeName>
+                    <Initials>BJ</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>McGowan</LastName>
+                    <ForeName>E M</ForeName>
+                    <Initials>EM</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Feeney</LastName>
+                    <ForeName>W P</ForeName>
+                    <Initials>WP</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Chiu</LastName>
+                    <ForeName>S H</ForeName>
+                    <Initials>SH</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Cascieri</LastName>
+                    <ForeName>M A</ForeName>
+                    <Initials>MA</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Chicchi</LastName>
+                    <ForeName>G G</ForeName>
+                    <Initials>GG</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Kurtz</LastName>
+                    <ForeName>M M</ForeName>
+                    <Initials>MM</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Sadowski</LastName>
+                    <ForeName>S</ForeName>
+                    <Initials>S</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Ber</LastName>
+                    <ForeName>E</ForeName>
+                    <Initials>E</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Tattersall</LastName>
+                    <ForeName>F D</ForeName>
+                    <Initials>FD</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Rupniak</LastName>
+                    <ForeName>N M</ForeName>
+                    <Initials>NM</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Williams</LastName>
+                    <ForeName>A R</ForeName>
+                    <Initials>AR</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Rycroft</LastName>
+                    <ForeName>W</ForeName>
+                    <Initials>W</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Hargreaves</LastName>
+                    <ForeName>R</ForeName>
+                    <Initials>R</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Metzger</LastName>
+                    <ForeName>J M</ForeName>
+                    <Initials>JM</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>MacIntyre</LastName>
+                    <ForeName>D E</ForeName>
+                    <Initials>DE</Initials>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <PublicationTypeList>
+                <PublicationType>Journal Article</PublicationType>
+            </PublicationTypeList>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>UNITED STATES</Country>
+            <MedlineTA>J Med Chem</MedlineTA>
+            <NlmUniqueID>9716531</NlmUniqueID>
+            <ISSNLinking>0022-2623</ISSNLinking>
+        </MedlineJournalInfo>
+        <ChemicalList>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>2-(1-(3,5-bis(trifluoromethyl)phenyl)ethoxy)-3-(4-fluoro)phenyl-4-(5-(2-phosphoryl-3-oxo-4H,-1,2,4-triazolo))methylmorpholine, bis(N-methylglucamine) salt</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Acetals</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Anti-Inflammatory Agents, Non-Steroidal</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Antiemetics</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Antineoplastic Agents</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>L 754030</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Morpholines</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Prodrugs</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance>Receptors, Neurokinin-1</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>15663-27-1</RegistryNumber>
+                <NameOfSubstance>Cisplatin</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>7732-18-5</RegistryNumber>
+                <NameOfSubstance>Water</NameOfSubstance>
+            </Chemical>
+        </ChemicalList>
+        <CitationSubset>IM</CitationSubset>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Acetals</DescriptorName>
+                <QualifierName MajorTopicYN="Y">chemical synthesis</QualifierName>
+                <QualifierName MajorTopicYN="N">chemistry</QualifierName>
+                <QualifierName MajorTopicYN="Y">metabolism</QualifierName>
+                <QualifierName MajorTopicYN="N">pharmacology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Animals</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Anti-Inflammatory Agents, Non-Steroidal</DescriptorName>
+                <QualifierName MajorTopicYN="Y">chemical synthesis</QualifierName>
+                <QualifierName MajorTopicYN="N">chemistry</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+                <QualifierName MajorTopicYN="N">pharmacology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Antiemetics</DescriptorName>
+                <QualifierName MajorTopicYN="Y">chemical synthesis</QualifierName>
+                <QualifierName MajorTopicYN="N">chemistry</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+                <QualifierName MajorTopicYN="N">pharmacology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Antineoplastic Agents</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Cisplatin</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Dogs</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Drug Evaluation, Preclinical</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Ferrets</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Guinea Pigs</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Humans</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Morpholines</DescriptorName>
+                <QualifierName MajorTopicYN="Y">chemical synthesis</QualifierName>
+                <QualifierName MajorTopicYN="N">chemistry</QualifierName>
+                <QualifierName MajorTopicYN="Y">metabolism</QualifierName>
+                <QualifierName MajorTopicYN="N">pharmacology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Prodrugs</DescriptorName>
+                <QualifierName MajorTopicYN="Y">chemical synthesis</QualifierName>
+                <QualifierName MajorTopicYN="N">chemistry</QualifierName>
+                <QualifierName MajorTopicYN="N">metabolism</QualifierName>
+                <QualifierName MajorTopicYN="N">pharmacology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Rats</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Receptors, Neurokinin-1</DescriptorName>
+                <QualifierName MajorTopicYN="Y">antagonists &amp; inhibitors</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Solubility</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Stereoisomerism</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Structure-Activity Relationship</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Vomiting</DescriptorName>
+                <QualifierName MajorTopicYN="N">chemically induced</QualifierName>
+                <QualifierName MajorTopicYN="N">drug therapy</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName MajorTopicYN="N">Water</DescriptorName>
+            </MeshHeading>
+        </MeshHeadingList>
+    </MedlineCitation>
+
+    <DeleteCitation>
+        <PMID Version="1">23203860</PMID>
+        <PMID Version="1">23203861</PMID>
+        <PMID Version="1">23203892</PMID>
+        <PMID Version="1">23203893</PMID>
+        <PMID Version="1">23203894</PMID>
+        <PMID Version="1">23203895</PMID>
+        <PMID Version="1">23203896</PMID>
+    </DeleteCitation>
+</MedlineCitationSet>

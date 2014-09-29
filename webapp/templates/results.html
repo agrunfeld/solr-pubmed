@@ -1,0 +1,31 @@
+<div class="panel-group" id="accordion">
+    {% for result in results.docs %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}">
+                    {{result.article_title}}
+                </a>
+            </h4>
+        </div>
+        <div id="collapse{{loop.index}}" class="panel-collapse collapse in">
+            <div class="panel-body">
+                {{result.abstract_text}}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+    <!--<h4>Search returned {{results.hits}} hit{{ results.hits|pluralize }}</h4>-->
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        {% for i in range(3) %}
+            <li><a href="#">{{i+1}}</a></li>
+        {% endfor %}
+        <li class="disabled"><a href="#">...</a></li>
+        <li><a href="#">{{results.hits // results_per_page }}</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+
+</div>
