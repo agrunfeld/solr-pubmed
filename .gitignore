@@ -71,4 +71,4 @@ docs/_build/
 target/
 
 # Lucene indices
-solr/core0/data
+solr/core0/data/
