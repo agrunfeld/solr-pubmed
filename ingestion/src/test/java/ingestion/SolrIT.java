@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import java.util.Collection;
 
-public class SolrIntegrationTest {
+public class SolrIT {
     public static final String SAMPLE_FILE = "samples/medsamp2014.xml";
     private SolrClient client;
 

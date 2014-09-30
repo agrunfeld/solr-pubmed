@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>project</artifactId>
@@ -11,38 +11,14 @@
 
     <artifactId>ingestion</artifactId>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <solr.port>8983</solr.port>
         <solr.version>4.10.0</solr.version>
         <jetty.version>9.2.2.v20140723</jetty.version>
         <slf4j.version>1.7.7</slf4j.version>
         <jaxb2.version>0.9.0</jaxb2.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-        <!--SLF4J LOG4J-12 Binding-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <!--JCL 1.1.1 implemented over SLF4J-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <!--JUL to SLF4J bridge-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <!--Wrapper of SLF4J and a few supplementary logging classes-->
-        <dependency>
-            <groupId>com.jcabi</groupId>
-            <artifactId>jcabi-log</artifactId>
-            <version>0.14.3</version>
-        </dependency>
         <!--Maven JAXB 2.x Plugin-->
         <dependency>
             <groupId>org.jvnet.jaxb2.maven2</groupId>
@@ -80,76 +56,106 @@
             <version>2.4</version>
         </dependency>
     </dependencies>
-    <!--todo: better integration testing, follow this guide http://docs.codehaus.org/display/MAVENUSER/Maven+and+Integration+Testing-->
     <build>
         <plugins>
-            <!--maven compiler configuration for setting Java version-->
+            <!--todo: fix log4j configuration-->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.3.v20140905</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <!--maven task for launching solr-->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>org.eclipse.jetty.runner.Runner</mainClass>
-                    <arguments>
-                        <argument>--port</argument>
-                        <argument>${solr.port}</argument>
-                        <argument>${basedir}/libs/solr-${solr.version}.war</argument>
-                    </arguments>
+                    <httpConnector>
+                        <port>${solr.port}</port>
+                    </httpConnector>
+                    <war>${project.basedir}/libs/solr-${solr.version}.war</war>
+                    <stopKey>stop</stopKey>
+                    <stopPort>9966</stopPort>
+                    <daemon>true</daemon>
                     <systemProperties>
                         <systemProperty>
                             <key>log4j.configuration</key>
-                            <value>file:${basedir}/resources/log4j.properties</value>
+                            <value>file:${project.basedir}/../log4j.properties</value>
                         </systemProperty>
                         <systemProperty>
                             <key>solr.solr.home</key>
-                            <value>${basedir}/solr</value>
+                            <value>${project.basedir}/../solr</value>
                         </systemProperty>
                     </systemProperties>
                 </configuration>
+                <dependencies>
+                    <!--SLF4J LOG4J-12 Binding-->
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <version>${slf4j.version}</version>
+                    </dependency>
+                    <!--JCL 1.1.1 implemented over SLF4J-->
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jcl-over-slf4j</artifactId>
+                        <version>${slf4j.version}</version>
+                    </dependency>
+                    <!--JUL to SLF4J bridge-->
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jul-to-slf4j</artifactId>
+                        <version>${slf4j.version}</version>
+                    </dependency>
+                    <!--Wrapper of SLF4J and a few supplementary logging classes-->
+                    <dependency>
+                        <groupId>com.jcabi</groupId>
+                        <artifactId>jcabi-log</artifactId>
+                        <version>0.14.3</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>deploy-war</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
-            <!--used to generate POJOs from document type definitions (DTDs)-->
-            <!--<plugin>-->
-            <!--<groupId>org.jvnet.jaxb2.maven2</groupId>-->
-            <!--<artifactId>maven-jaxb2-plugin</artifactId>-->
-            <!--<version>${jaxb2.version}</version>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<goals>-->
-            <!--<goal>generate</goal>-->
-            <!--</goals>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--<configuration>-->
-            <!--&lt;!&ndash;  if you want to put DTD somewhere else-->
-            <!--<schemaDirectory>src/main/jaxb</schemaDirectory>-->
-            <!--&ndash;&gt;-->
-            <!--&lt;!&ndash;<extension>true</extension>&ndash;&gt;-->
-            <!--<schemaLanguage>DTD</schemaLanguage>-->
-            <!--<schemaIncludes>-->
-            <!--<value>schema/*.dtd</value>-->
-            <!--</schemaIncludes>-->
-            <!--<bindingIncludes>-->
-            <!--<value>bindings/*.jaxb</value>-->
-            <!--</bindingIncludes>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
         </plugins>
     </build>
+
+    <!--<build>-->
+    <!--<plugins>-->
+    <!--&lt;!&ndash;used to generate POJOs from document type definitions (DTDs)&ndash;&gt;-->
+    <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
+    <!--&lt;!&ndash;<groupId>org.jvnet.jaxb2.maven2</groupId>&ndash;&gt;-->
+    <!--&lt;!&ndash;<artifactId>maven-jaxb2-plugin</artifactId>&ndash;&gt;-->
+    <!--&lt;!&ndash;<version>${jaxb2.version}</version>&ndash;&gt;-->
+    <!--&lt;!&ndash;<executions>&ndash;&gt;-->
+    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;<goal>generate</goal>&ndash;&gt;-->
+    <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;</executions>&ndash;&gt;-->
+    <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;  if you want to put DTD somewhere else&ndash;&gt;-->
+    <!--&lt;!&ndash;<schemaDirectory>src/main/jaxb</schemaDirectory>&ndash;&gt;-->
+    <!--&lt;!&ndash;&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<extension>true</extension>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<schemaLanguage>DTD</schemaLanguage>&ndash;&gt;-->
+    <!--&lt;!&ndash;<schemaIncludes>&ndash;&gt;-->
+    <!--&lt;!&ndash;<value>schema/*.dtd</value>&ndash;&gt;-->
+    <!--&lt;!&ndash;</schemaIncludes>&ndash;&gt;-->
+    <!--&lt;!&ndash;<bindingIncludes>&ndash;&gt;-->
+    <!--&lt;!&ndash;<value>bindings/*.jaxb</value>&ndash;&gt;-->
+    <!--&lt;!&ndash;</bindingIncludes>&ndash;&gt;-->
+    <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+    <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
+    <!--</plugins>-->
+    <!--</build>-->
 </project>
