@@ -24,6 +24,6 @@ public class DateConversionTest {
         date.setYear(year);
         date.setMonth(month);
         date.setDay(day);
-        assertEquals("Sat Jan 01 00:00:00 PST 2000", date.getConvertedDate().toString());
+        assertEquals("Sat Jan 01 00:00:00 UTC 2000", date.getConvertedDate().toString());
     }
 }
