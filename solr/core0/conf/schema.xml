@@ -6,9 +6,29 @@
         <fieldType name="date" class="solr.TrieDateField" indexed="false" stored="true"/>
         <fieldType name="string" class="solr.StrField" indexed="false" stored="true"/>
         <fieldType name="multi_text" class="solr.TextField" indexed="true" stored="true" multiValued="true" omitNorms="false"
-                   termVectors="true" termPositions="true"/>
+                   termVectors="true" termPositions="true">
+              <analyzer type="index">
+                <tokenizer class="solr.StandardTokenizerFactory"/>
+                <filter class="solr.HyphenatedWordsFilterFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+              </analyzer>
+              <analyzer type="query">
+                <tokenizer class="solr.StandardTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+              </analyzer>
+        </fieldType>
         <fieldType name="text" class="solr.TextField" indexed="true" stored="true" multiValued="false" omitNorms="false"
-                   termVectors="true" termPositions="true"/>
+                   termVectors="true" termPositions="true">
+              <analyzer type="index">
+                <tokenizer class="solr.StandardTokenizerFactory"/>
+                <filter class="solr.HyphenatedWordsFilterFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+              </analyzer>
+              <analyzer type="query">
+                <tokenizer class="solr.StandardTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+              </analyzer>
+        </fieldType>
     </types>
     <!--todo: ensure timezone parameters set correctly-->
     <!--consult field properties by use case to determine which field attributes to set-->
