@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-//todo: lots of code duplication, may just be cleaner to write a parser
+//todo: alternative approach, use an XSLT to transform medline records to XML Formatted Index Updates
 public class MedlineReader {
 
     private final Unmarshaller unmarshaller;
