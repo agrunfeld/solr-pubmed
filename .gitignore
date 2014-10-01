@@ -67,8 +67,5 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-# PyBuilder
-target/
-
 # Lucene indices
 solr/core0/data/
