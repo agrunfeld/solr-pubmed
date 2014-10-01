@@ -94,5 +94,44 @@
     <!--<processor class="solr.LogUpdateProcessorFactory" />-->
     <!--<processor class="solr.RunUpdateProcessorFactory" />-->
     <!--</updateRequestProcessorChain>-->
+    <searchComponent class="solr.HighlightComponent" name="highlight">
+        <highlighting>
+            <!-- Configure the standard formatter -->
+            <formatter name="html"
+                       default="true"
+                       class="solr.highlight.HtmlFormatter">
+                <lst name="defaults">
+                    <str name="hl.simple.pre"><![CDATA[<em>]]></str>
+                    <str name="hl.simple.post"><![CDATA[</em>]]></str>
+                </lst>
+            </formatter>
+
+            <!-- Configure the standard encoder -->
+            <encoder name="html"
+                     class="solr.highlight.HtmlEncoder" />
+
+
+            <!--<boundaryScanner name="default"-->
+                             <!--default="true"-->
+                             <!--class="solr.highlight.SimpleBoundaryScanner">-->
+                <!--<lst name="defaults">-->
+                    <!--<str name="hl.bs.maxScan">10</str>-->
+                    <!--<str name="hl.bs.chars">.,!? &#9;&#10;&#13;</str>-->
+                <!--</lst>-->
+            <!--</boundaryScanner>-->
+
+            <!--<boundaryScanner name="breakIterator"-->
+                             <!--class="solr.highlight.BreakIteratorBoundaryScanner">-->
+                <!--<lst name="defaults">-->
+                    <!--&lt;!&ndash; type should be one of CHARACTER, WORD(default), LINE and SENTENCE &ndash;&gt;-->
+                    <!--<str name="hl.bs.type">WORD</str>-->
+                    <!--&lt;!&ndash; language and country are used when constructing Locale object.  &ndash;&gt;-->
+                    <!--&lt;!&ndash; And the Locale object will be used when getting instance of BreakIterator &ndash;&gt;-->
+                    <!--<str name="hl.bs.language">en</str>-->
+                    <!--<str name="hl.bs.country">US</str>-->
+                <!--</lst>-->
+            <!--</boundaryScanner>-->
+        </highlighting>
+    </searchComponent>
 
 </config>

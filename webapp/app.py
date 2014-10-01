@@ -1,8 +1,5 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
-from flask_appconfig import AppConfig
-from flask_wtf import Form
-from wtforms import HiddenField, ValidationError, SubmitField, StringField
 import pysolr
 
 
@@ -26,7 +23,10 @@ def create_app():
     def index():
         q = request.args.get('q', '')
         if q:
-            return render_template('index.html', results=solr.search(q), results_per_page=10)
+            results = solr.search(q, **{
+                'hl': 'true',
+            })
+            return render_template('index.html', results=results, results_per_page=10)
         else:
             return render_template('index.html', results=None, results_per_page=10)
     return app

@@ -3,19 +3,21 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}">
+                <a data-toggle="collapse" data-parent="#accordion{{loop.index}}" href="#collapse{{loop.index}}">
                     {{result.article_title}}
                 </a>
             </h4>
         </div>
         <div id="collapse{{loop.index}}" class="panel-collapse collapse in">
+            {% for snippet in results.highlighting[result.id].abstract_text %}
             <div class="panel-body">
-                {{result.abstract_text}}
+                {{snippet|safe}}
             </div>
+            {% endfor %}
+
         </div>
     </div>
     {% endfor %}
-
 
     <!--<h4>Search returned {{results.hits}} hit{{ results.hits|pluralize }}</h4>-->
     <ul class="pagination">
