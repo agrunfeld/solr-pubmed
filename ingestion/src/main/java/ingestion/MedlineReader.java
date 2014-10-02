@@ -50,6 +50,7 @@ public class MedlineReader {
         addDateField(document, "date_completed", citation.getDateCompleted());
         addDateField(document, "date_revised", citation.getDateRevised());
         addField(document, "article_title", citation.getArticle().getArticleTitle());
+        addField(document, "journal_title", citation.getArticle().getJournal().getTitle());
         if (citation.getArticle().getAbstract() != null) {
             addAbstractText(document, "abstract_text", citation.getArticle().getAbstract().getAbstractText());
         }

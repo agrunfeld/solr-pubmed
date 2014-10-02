@@ -46,12 +46,23 @@ public class MedlineReaderTest {
     }
 
     @Test
+    public void testUnmarshallSetsJournalTitle() throws Exception {
+        URL url = Resources.getResource(TEST_FILE);
+        File testFile = new File(url.getFile());
+        MedlineCitationSet set = ingestion.unmarshall(testFile);
+        MedlineCitation citation = set.getMedlineCitation().get(0);
+        assertEquals("Molecular microbiology", citation.getArticle().getJournal().getTitle());
+    }
+
+    @Test
     public void testToInputDocument() throws Exception {
-
         SolrInputDocument inputDocument = ingestion.mapToSolrInputDocument(generateMockCitation());
-        SolrInputField field = inputDocument.getField("date_created");
 
+        SolrInputField field = inputDocument.getField("date_created");
         assertTrue(field.getValueCount() > 0);
+
+        field = inputDocument.getField("journal_title");
+        assertEquals("test", field.getValue());
     }
 
     @Test
@@ -88,6 +99,9 @@ public class MedlineReaderTest {
         Abstract mockAbstract = new Abstract();
         mockArticle.setAbstract(mockAbstract);
         citation.setArticle(mockArticle);
+        Journal mockJournal = new Journal();
+        mockJournal.setTitle("test");
+        mockArticle.setJournal(mockJournal);
         return citation;
     }
 }
