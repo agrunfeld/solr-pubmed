@@ -41,13 +41,13 @@
         <field name="abstract_text" type="multi_text"/>
         <field name="article_title" type="text"/>
         <field name="author_list" type="multi_text"/>
-        <field name="journal_issue" type="text"/>
-        <field name="journal_title" type="text"/>
+        <field name="journal_issue" type="string"/>
+        <field name="journal_title" type="string"/>
         <field name="article_date" type="date"/>
-        <field name="gene_symbol_list" type="multi_text"/>
-        <field name="keyword_list" type="multi_text"/>
-        <field name="mesh_heading_list" type="multi_text"/>
-        <field name="chemical_list" type="multi_text"/>
+        <field name="gene_symbol_list" type="string"/>
+        <field name="keyword_list" type="string"/>
+        <field name="mesh_heading_list" type="string"/>
+        <field name="chemical_list" type="string"/>
 
         <!--todo: dynamic fields-->
 

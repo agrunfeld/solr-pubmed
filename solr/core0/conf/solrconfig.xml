@@ -20,80 +20,26 @@
           -->
         <lst name="defaults">
             <str name="echoParams">explicit</str>
+            <!--number of results-->
             <int name="rows">10</int>
+
+            <!--highlighting defaults-->
+            <str name="hl">on</str>
+            <str name="hl.fl">title abstract_text</str>
+
+            <!--faceting defaults-->
+            <str name="facet">on</str>
+            <str name="facet.missing">true</str>
+            <str name="facet.field">mesh_heading_list</str>
+            <str name="facet.field">gene_symbol_list</str>
+            <str name="facet.field">journal_title</str>
+            <str name="facet.mincount">0</str>
+
+            <!--default search field-->
             <str name="df">abstract_text</str>
         </lst>
     </requestHandler>
 
-    <!--<queryResponseWriter name="json" class="solr.JSONResponseWriter">-->
-        <!--  &lt;!&ndash; For the purposes of the tutorial, JSON response are written as-->
-<!--       plain text so that it's easy to read in *any* browser.-->
-<!--       If you are building applications that consume JSON, just remove-->
-<!--       this override to get the default "application/json" mime type.-->
-<!--    &ndash;&gt;-->
-        <!--&lt;!&ndash;  <str name="content-type">text/plain</str>&ndash;&gt;-->
-    <!--</queryResponseWriter>-->
-
-    <!--<requestHandler name="/update" class="solr.XmlUpdateRequestHandler">-->
-    <!--<lst name="defaults">-->
-    <!--<str name="update.chain">uima</str>-->
-    <!--</lst>-->
-    <!--</requestHandler>-->
-
-    <!--<updateRequestProcessorChain name="uima">-->
-    <!--<processor class="org.apache.solr.uima.processor.UIMAUpdateRequestProcessorFactory">-->
-    <!--<lst name="uimaConfig">-->
-    <!--<lst name="runtimeParameters">-->
-    <!--<str name="keyword_apikey">5a32edfcf4bbb8a364e8f3dd729cea5f8f862fc0</str>-->
-    <!--<str name="concept_apikey">5a32edfcf4bbb8a364e8f3dd729cea5f8f862fc0</str>-->
-    <!--<str name="lang_apikey">5a32edfcf4bbb8a364e8f3dd729cea5f8f862fc0</str>-->
-    <!--<str name="cat_apikey">5a32edfcf4bbb8a364e8f3dd729cea5f8f862fc0</str>-->
-    <!--<str name="entities_apikey">5a32edfcf4bbb8a364e8f3dd729cea5f8f862fc0</str>-->
-    <!--<str name="oc_licenseID">b6pdnpdtpmg7vqqdy2tvxbag</str>-->
-    <!--</lst>-->
-    <!--<str name="analysisEngine">/org/apache/uima/desc/OverridingParamsExtServicesAE.xml</str>-->
-    <!--&lt;!&ndash; Set to true if you want to continue indexing even if text processing fails.-->
-    <!--Default is false. That is, Solr throws RuntimeException and-->
-    <!--never indexed documents entirely in your session. &ndash;&gt;-->
-    <!--<bool name="ignoreErrors">true</bool>-->
-    <!--&lt;!&ndash; This is optional. It is used for logging when text processing fails.-->
-    <!--If logField is not specified, uniqueKey will be used as logField.-->
-    <!--<str name="logField">id</str>-->
-    <!--&ndash;&gt;-->
-    <!--<lst name="analyzeFields">-->
-    <!--<bool name="merge">false</bool>-->
-    <!--<arr name="fields">-->
-    <!--<str>title</str>-->
-    <!--</arr>-->
-    <!--</lst>-->
-    <!--<lst name="fieldMappings">-->
-    <!--<lst name="type">-->
-    <!--<str name="name">org.apache.uima.alchemy.ts.concept.ConceptFS</str>-->
-    <!--<lst name="mapping">-->
-    <!--<str name="feature">text</str>-->
-    <!--<str name="field">concept</str>-->
-    <!--</lst>-->
-    <!--</lst>-->
-    <!--<lst name="type">-->
-    <!--<str name="name">org.apache.uima.alchemy.ts.language.LanguageFS</str>-->
-    <!--<lst name="mapping">-->
-    <!--<str name="feature">language</str>-->
-    <!--<str name="field">language</str>-->
-    <!--</lst>-->
-    <!--</lst>-->
-    <!--<lst name="type">-->
-    <!--<str name="name">org.apache.uima.SentenceAnnotation</str>-->
-    <!--<lst name="mapping">-->
-    <!--<str name="feature">coveredText</str>-->
-    <!--<str name="field">sentence</str>-->
-    <!--</lst>-->
-    <!--</lst>-->
-    <!--</lst>-->
-    <!--</lst>-->
-    <!--</processor>-->
-    <!--<processor class="solr.LogUpdateProcessorFactory" />-->
-    <!--<processor class="solr.RunUpdateProcessorFactory" />-->
-    <!--</updateRequestProcessorChain>-->
     <searchComponent class="solr.HighlightComponent" name="highlight">
         <highlighting>
             <!-- Configure the standard formatter -->
@@ -101,36 +47,14 @@
                        default="true"
                        class="solr.highlight.HtmlFormatter">
                 <lst name="defaults">
-                    <str name="hl.simple.pre"><![CDATA[<em>]]></str>
-                    <str name="hl.simple.post"><![CDATA[</em>]]></str>
+                    <str name="hl.simple.pre"><![CDATA[<span class="highlight">]]></str>
+                    <str name="hl.simple.post"><![CDATA[</span>]]></str>
                 </lst>
             </formatter>
 
             <!-- Configure the standard encoder -->
             <encoder name="html"
-                     class="solr.highlight.HtmlEncoder" />
-
-
-            <!--<boundaryScanner name="default"-->
-                             <!--default="true"-->
-                             <!--class="solr.highlight.SimpleBoundaryScanner">-->
-                <!--<lst name="defaults">-->
-                    <!--<str name="hl.bs.maxScan">10</str>-->
-                    <!--<str name="hl.bs.chars">.,!? &#9;&#10;&#13;</str>-->
-                <!--</lst>-->
-            <!--</boundaryScanner>-->
-
-            <!--<boundaryScanner name="breakIterator"-->
-                             <!--class="solr.highlight.BreakIteratorBoundaryScanner">-->
-                <!--<lst name="defaults">-->
-                    <!--&lt;!&ndash; type should be one of CHARACTER, WORD(default), LINE and SENTENCE &ndash;&gt;-->
-                    <!--<str name="hl.bs.type">WORD</str>-->
-                    <!--&lt;!&ndash; language and country are used when constructing Locale object.  &ndash;&gt;-->
-                    <!--&lt;!&ndash; And the Locale object will be used when getting instance of BreakIterator &ndash;&gt;-->
-                    <!--<str name="hl.bs.language">en</str>-->
-                    <!--<str name="hl.bs.country">US</str>-->
-                <!--</lst>-->
-            <!--</boundaryScanner>-->
+                     class="solr.highlight.HtmlEncoder"/>
         </highlighting>
     </searchComponent>
 
