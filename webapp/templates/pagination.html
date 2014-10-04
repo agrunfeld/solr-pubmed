@@ -1,0 +1,42 @@
+{% macro page_link(start) -%}
+    {{ url_for('index', start=start, q=query)  }}
+{%- endmacro %}
+
+{# todo: fix last page offset, page numbers#}
+{% with %}
+    {% set max_buttons = 10  %}
+    {% set pages = (results.hits / results_per_page) | ceiling  %}
+    {% set page_nav = min(max_buttons, pages - 1) %}
+
+    <ul class="pagination">
+        {# previous page button #}
+        {% if start == 0 %}
+            <li class="disabled"><a href="#">&laquo;</a></li>
+        {% else %}
+            <li><a href="{{ page_link(start - 1) }}">&laquo;</a></li>
+        {% endif %}
+
+        {# buttons #}
+        {% for i in range(page_nav) %}
+            <li {% if i == start %} class="active" {% endif %}>
+                <a href="{{page_link(loop.index0)}}">{{loop.index}}</a>
+            </li>
+        {% endfor %}
+
+        {# over flow button #}
+        {% if page_nav > max_buttons %}
+            <li class="disabled"><a href="#">...</a></li>
+        {% endif %}
+
+        {# last page button #}
+        {% if start == pages - 1 %}
+            <li class="active"><a href="{{ page_link(pages-1) }}">{{ pages }}</a></li>
+            <li class="disabled"><a href="#">&raquo;</a></li>
+        {% else %}
+            <li><a href="{{ page_link(pages - 1) }}">{{ pages }}</a></li>
+            <li><a href="{{ page_link(start + 1) }}">&raquo;</a></li>
+        {% endif %}
+    </ul>
+
+{% endwith %}
+

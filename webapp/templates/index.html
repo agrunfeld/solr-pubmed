@@ -25,11 +25,14 @@ Test
 {% block content %}
 <div class="container-fluid">
     <!--left-->
-    <div class="col-sm-3">
-        {% include 'sidebar.html' %}
+    <div class="col-xs-4 ">
+        {% if facets %}
+            {% include 'sidebar.html' %}
+        {% endif %}
+
     </div>
     <!--center-->
-    <div class="col-sm-7">
+    <div class="col-xs-8">
         {% if results %}
             {% include 'results.html' %}
         {% endif %}

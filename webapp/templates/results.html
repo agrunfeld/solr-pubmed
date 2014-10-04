@@ -2,7 +2,7 @@
 <div class="list-group">
         {% for result in results.docs %}
         <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            <h4 class="list-group-item-heading ellipsis">
                 {{result.article_title}}
             </h4>
             {% for snippet in results.highlighting[result.id].abstract_text %}
@@ -13,13 +13,7 @@
         </a>
         {% endfor %}
 
-    <ul class="pagination">
-        <li><a href="#">&laquo;</a></li>
-        {% for i in range(3) %}
-            <li><a href="#">{{i+1}}</a></li>
-        {% endfor %}
-        <li class="disabled"><a href="#">...</a></li>
-        <li><a href="#">{{results.hits // results_per_page }}</a></li>
-        <li><a href="#">&raquo;</a></li>
-    </ul>
+    {% if results.hits > results_per_page %}
+        {% include 'pagination.html' %}
+    {% endif %}
 </div>
