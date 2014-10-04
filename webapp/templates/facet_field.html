@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">{{ facet_key | get_facet_name}}</div>
+    </div>
+    <div class="list-group">
+        {% for facet in facets.facet_fields[facet_key] %}
+            {% if loop.index0 % 2 == 0 %}
+                <a href="#" class="list-group-item ellipsis">
+                    <span class="pull-right">{{ facets.facet_fields[facet_key][loop.index0+ 1] }}</span>
+                    <small>{{ facet }}</small>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

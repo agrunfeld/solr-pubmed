@@ -4,7 +4,7 @@
     <types>
         <fieldType name="uuid" class="solr.UUIDField" indexed="true" stored="true" multiValued="false" required="true"/>
         <fieldType name="date" class="solr.TrieDateField" indexed="false" stored="true"/>
-        <fieldType name="string" class="solr.StrField" indexed="false" stored="true"/>
+        <fieldType name="string" class="solr.StrField" indexed="false" stored="true" docValues="true"/>
         <fieldType name="multi_text" class="solr.TextField" indexed="true" stored="true" multiValued="true" omitNorms="false"
                    termVectors="true" termPositions="true">
               <analyzer type="index">

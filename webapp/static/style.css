@@ -1,5 +1,7 @@
 body { padding-top: 70px; }
-.highlight {
-    background-color: rgba(255, 255, 0, 0.2);
-    font-style: italic;
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+
