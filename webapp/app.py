@@ -9,6 +9,14 @@ facet_names = {
     'gene_symbol_list': 'Gene Symbol'
 }
 results_per_page = 20
+
+
+# generate facet query for stock Solr request handler
+# see http://wiki.apache.org/solr/SolrFacetingOverview#line-9
+def get_facet_query(facet_field, facet_value):
+    return "{0}:\"{1}\"".format(facet_field, facet_value)
+
+
 # TODO: Flask-Appconfig
 def create_app():
     app = Flask(__name__)
@@ -18,9 +26,6 @@ def create_app():
     # in a real app, these should be configured through Flask-Appconfig
     app.config['SECRET_KEY'] = 'devkey'
 
-    @app.template_filter('ceiling')
-    def ceiling(value):
-        return math.ceil(value)
 
     @app.template_filter('get_facet_name')
     def get_facet_name(key):
@@ -37,26 +42,30 @@ def create_app():
     @app.route('/', methods=['GET'])
     def index():
         q = request.args.get('q', '')
-        if request.args.get('start'):
-            start = int(request.args.get('start'))
-        else:
-            start = 0
+        fq = request.args.get('fq', '')
+        print(fq)
+        page = int(request.args.get('page', 0))
         if q:
             results = solr.search(q, **{
                 'rows': results_per_page,
-                'start': start,
+                'start': page,
+                'fq': fq,
             })
             return render_template('index.html',
                                    query=q,
+                                   fq=fq,
                                    results=results,
                                    facets=results.facets,
                                    results_per_page=results_per_page,
-                                   start=start,
+                                   page=page,
                                    )
         else:
             return render_template('index.html', results_per_page=10)
+
     app.jinja_env.globals.update(max=max)
     app.jinja_env.globals.update(min=min)
+    app.jinja_env.globals.update(ceil=math.ceil)
+    app.jinja_env.globals.update(get_fq=get_facet_query)
 
     return app
 

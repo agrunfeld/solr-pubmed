@@ -29,7 +29,7 @@
 
             <!--faceting defaults-->
             <str name="facet">on</str>
-            <str name="facet.missing">true</str>
+            <str name="facet.missing">false</str>
             <str name="facet.field">mesh_heading_list</str>
             <str name="facet.field">gene_symbol_list</str>
             <str name="facet.field">journal_title</str>

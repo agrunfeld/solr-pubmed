@@ -5,6 +5,7 @@
         <fieldType name="uuid" class="solr.UUIDField" indexed="true" stored="true" multiValued="false" required="true"/>
         <fieldType name="date" class="solr.TrieDateField" indexed="false" stored="true"/>
         <fieldType name="string" class="solr.StrField" indexed="false" stored="true" docValues="true"/>
+        <fieldType name="facet_text" class="solr.StrField" indexed="true" stored="false" docValues="true" multiValued="true"/>
         <fieldType name="multi_text" class="solr.TextField" indexed="true" stored="true" multiValued="true" omitNorms="false"
                    termVectors="true" termPositions="true">
               <analyzer type="index">
@@ -42,11 +43,11 @@
         <field name="article_title" type="text"/>
         <field name="author_list" type="multi_text"/>
         <field name="journal_issue" type="string"/>
-        <field name="journal_title" type="string"/>
+        <field name="journal_title" type="facet_text"/>
         <field name="article_date" type="date"/>
-        <field name="gene_symbol_list" type="string"/>
+        <field name="gene_symbol_list" type="facet_text"/>
         <field name="keyword_list" type="string"/>
-        <field name="mesh_heading_list" type="string"/>
+        <field name="mesh_heading_list" type="facet_text"/>
         <field name="chemical_list" type="string"/>
 
         <!--todo: dynamic fields-->
