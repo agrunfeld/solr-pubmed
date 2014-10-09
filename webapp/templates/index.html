@@ -1,21 +1,23 @@
-{% extends "bootstrap/base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-{% import "bootstrap/fixes.html" as fixes %}
+{% extends "base.html" %}
 
 
-{% block head %}
-{{super()}}
-{{fixes.ie8()}}
-{% endblock %}
-
-{% block title %}
-Test
-{% endblock %}
+{% block title %}Test{% endblock %}
 
 {% block styles %}
-{{super()}}
-<link rel="stylesheet"
-      href="{{url_for('.static', filename='style.css')}}">
+    <!-- Modernizr -->
+    <script src="{{ url_for('.static', filename='js/libs/modernizr-2.6.2.min.js') }}"></script>
+    <!-- framework css -->
+    <!--[if gt IE 9]><!-->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('.static', filename='css/groundwork.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('.static', filename='css/custom.css') }}">
+    <!--<![endif]-->
+    <!--[if lte IE 9]>
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-core.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-type.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-ui.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-anim.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-ie.css')}}">
+    <![endif]-->
 {% endblock %}
 
 {% block navbar %}
@@ -23,26 +25,24 @@ Test
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <!--left-->
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        {% if facets %}
-            {% include 'sidebar.html' %}
-        {% endif %}
+    <div class="row">
+        <div class="one fourth padded">
+            {% if facets %}
+                {% include 'sidebar.html' %}
+            {% endif %}
 
+        </div>
+        <div class="three fourths padded">
+            {% if results %}
+                {% include 'results.html' %}
+            {% endif %}
+        </div>
     </div>
-    <!--center-->
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-        {% if results %}
-            {% include 'results.html' %}
-        {% endif %}
-    </div>
-</div>
 {% endblock %}
 
 
 {% block scripts %}
-<!--<script src="{{url_for('.static', filename='myscripts.js')}}"></script>-->
-{{super()}}
+    <script src="{{ url_for('.static', filename='js/libs/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/groundwork.all.js') }}"></script>
 {% endblock %}
 

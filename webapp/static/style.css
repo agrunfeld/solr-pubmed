@@ -1,7 +1,0 @@
-body { padding-top: 70px; }
-.ellipsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-

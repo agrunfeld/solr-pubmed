@@ -1,15 +1,16 @@
-<dl>
-    <dt>{{ facet_key | get_facet_name}}</dt>
-        {% for i in facets.facet_fields[facet_key] %}
-            {% if loop.index0 % 2 == 0 %}
-                {% set facet_val = facets.facet_fields[facet_key][loop.index0] %}
-                {% set facet_count = facets.facet_fields[facet_key][loop.index0 + 1] %}
-                <dd class="list-unstyled">
+<h4>{{ facet_key | get_facet_name }}</h4>
+<ul class="unstyled">
+    {% for i in facets.facet_fields[facet_key] %}
+        {% if loop.index0 % 2 == 0 %}
+            {% set facet_val = facets.facet_fields[facet_key][loop.index0] %}
+            {% set facet_count = facets.facet_fields[facet_key][loop.index0 + 1] %}
+            <li>
                 <a href="{{ url_for('index', q=query) }}&fq={{ get_fq(facet_key, facet_val) }}">
                     <span class="pull-right">{{ facet_count }}</span>
-                    <small>{{ facet_val }}</small>
+
+                    <div data-truncate="1">{{ facet_val }}</div>
                 </a>
-                </dd>
-            {% endif %}
-        {% endfor %}
-</dl>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

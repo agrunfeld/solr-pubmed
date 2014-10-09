@@ -1,19 +1,28 @@
-<h4>Search returned {{results.hits}} hit{{ results.hits|pluralize }}</h4>
-<div class="list-group">
-        {% for result in results.docs %}
-        <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading ellipsis">
-                {{result.article_title}}
+<h4>Search returned {{ results.hits }} hit{{ results.hits|pluralize }}</h4>
+<div>
+    {% for result in results.docs %}
+        <div class="gap-bottom animated fadeInRight">
+            <h4 class="results-heading" data-truncate="1">
+                {{ result.article_title }}
             </h4>
+
+            <div class="author-list">
+                <a href="#" rel="author">Author 1</a>,
+                <a href="#" rel="author">Author 2</a>,
+                Author 3
+            </div>
             {% for snippet in results.highlighting[result.id].abstract_text %}
-            <p class="list-group-item-text">
-                {{snippet|safe}}
-            </p>
+                <p class="results-text">
+                    {{ snippet|safe }}
+                </p>
             {% endfor %}
-        </a>
-        {% endfor %}
+            <a class="pad-right" href="#">Related documents</a>
+            <a class="pad-right" href="example.pdf">Document Link</a>
+        </div>
+    {% endfor %}
 
     {% if results.hits > results_per_page %}
+        {% include 'pagination.html' %}
         {% include 'pagination.html' %}
     {% endif %}
 </div>

@@ -1,17 +1,5 @@
-<!--todo: what sort of filters? date, facets-->
-<!--http://ghusse.github.io/jQRangeSlider/index.html-->
-{% if facets.facet_fields%}
+{% if facets.facet_fields %}
     {% for facet_key in facets.facet_fields %}
         {% include 'facet_field.html' %}
     {% endfor %}
 {% endif %}
-<hr>
-
-{% if facets.facet_dates%}
-    <div class="panel panel-default">
-        <div class="panel-heading">Title</div>
-        <div class="panel-body">Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
-            Aliquam in felis sit amet augue.</div>
-    </div>
-{% endif %}
-<hr>
