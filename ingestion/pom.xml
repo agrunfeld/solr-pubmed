@@ -125,37 +125,33 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!--used to generate POJOs from document type definitions (DTDs)-->
+            <!--<plugin>-->
+                <!--<groupId>org.jvnet.jaxb2.maven2</groupId>-->
+                <!--<artifactId>maven-jaxb2-plugin</artifactId>-->
+                <!--<version>${jaxb2.version}</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>generate</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--&lt;!&ndash;  if you want to put DTD somewhere else-->
+                    <!--<schemaDirectory>src/main/jaxb</schemaDirectory>-->
+                    <!--&ndash;&gt;-->
+                    <!--&lt;!&ndash;<extension>true</extension>&ndash;&gt;-->
+                    <!--<schemaLanguage>DTD</schemaLanguage>-->
+                    <!--<schemaIncludes>-->
+                        <!--<value>schema/pubmed_100101.dtd</value>-->
+                    <!--</schemaIncludes>-->
+                    <!--<bindingIncludes>-->
+                        <!--<value>bindings/*.jaxb</value>-->
+                    <!--</bindingIncludes>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
-
-    <!--<build>-->
-    <!--<plugins>-->
-    <!--&lt;!&ndash;used to generate POJOs from document type definitions (DTDs)&ndash;&gt;-->
-    <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
-    <!--&lt;!&ndash;<groupId>org.jvnet.jaxb2.maven2</groupId>&ndash;&gt;-->
-    <!--&lt;!&ndash;<artifactId>maven-jaxb2-plugin</artifactId>&ndash;&gt;-->
-    <!--&lt;!&ndash;<version>${jaxb2.version}</version>&ndash;&gt;-->
-    <!--&lt;!&ndash;<executions>&ndash;&gt;-->
-    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
-    <!--&lt;!&ndash;<goals>&ndash;&gt;-->
-    <!--&lt;!&ndash;<goal>generate</goal>&ndash;&gt;-->
-    <!--&lt;!&ndash;</goals>&ndash;&gt;-->
-    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
-    <!--&lt;!&ndash;</executions>&ndash;&gt;-->
-    <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
-    <!--&lt;!&ndash;&lt;!&ndash;  if you want to put DTD somewhere else&ndash;&gt;-->
-    <!--&lt;!&ndash;<schemaDirectory>src/main/jaxb</schemaDirectory>&ndash;&gt;-->
-    <!--&lt;!&ndash;&ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;&lt;!&ndash;<extension>true</extension>&ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;<schemaLanguage>DTD</schemaLanguage>&ndash;&gt;-->
-    <!--&lt;!&ndash;<schemaIncludes>&ndash;&gt;-->
-    <!--&lt;!&ndash;<value>schema/*.dtd</value>&ndash;&gt;-->
-    <!--&lt;!&ndash;</schemaIncludes>&ndash;&gt;-->
-    <!--&lt;!&ndash;<bindingIncludes>&ndash;&gt;-->
-    <!--&lt;!&ndash;<value>bindings/*.jaxb</value>&ndash;&gt;-->
-    <!--&lt;!&ndash;</bindingIncludes>&ndash;&gt;-->
-    <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
-    <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
-    <!--</plugins>-->
-    <!--</build>-->
 </project>

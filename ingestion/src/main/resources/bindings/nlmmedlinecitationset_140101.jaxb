@@ -6,5 +6,5 @@
     <!--<element name="Month" type="class" convert="int" />-->
     <!--<element name="Day" type="class" convert="int" />-->
     <!--<interface name="Date" members="DateCreated DateCompleted DateRevised"/>-->
-    <options package="nlm.medline" />
+    <options package="pubmed" />
 </xml-java-binding-schema>

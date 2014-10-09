@@ -7,6 +7,7 @@ import org.apache.solr.client.solrj.impl.ConcurrentUpdateSolrServer;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.client.solrj.request.UpdateRequest;
 import org.apache.solr.client.solrj.response.UpdateResponse;
+import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,5 +48,11 @@ public class SolrClient {
         SolrQuery q = new SolrQuery("*:*");
         q.setRows(0);  // don't actually request any data
         return solrServer.query(q).getResults().getNumFound();
+    }
+
+    public SolrDocumentList getRecords(int maxRows) throws SolrServerException {
+        SolrQuery q = new SolrQuery("*:*");
+        q.setRows(maxRows);
+        return solrServer.query(q).getResults();
     }
 }
