@@ -5,7 +5,6 @@
 {% with %}
     {% set max_buttons = 10 %}
     {% set pages = ceil(results.hits / results_per_page) %}
-    {% set page_nav = min(max_buttons, pages - 1) %}
 
     <ul class="button-group">
         {# previous page button #}
@@ -16,7 +15,7 @@
         {% endif %}
 
         {# buttons #}
-        {% for i in range(page_nav) %}
+        {% for i in range(max_buttons - 1) %}
             <li>
                 <a {% if i == page %} aria-selected="true" {% endif %} role="button"
                                       href="{{ page_link(loop.index0) }}">{{ loop.index }}</a>
@@ -24,7 +23,7 @@
         {% endfor %}
 
         {# over flow button #}
-        {% if page_nav > max_buttons %}
+        {% if pages > max_buttons %}
             <li><a role="button" class="disabled" aria-disabled="true" href="#">...</a></li>
         {% endif %}
 

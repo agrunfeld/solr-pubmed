@@ -4,11 +4,22 @@
 
 .author-list {
     margin-bottom: 0;
-    color: #489ac1;
+}
+
+.author-link {
+    margin-right: 5px;
+}
+a.author-link, a.author-link:active, a.author-link:visited, a.author-link:hover {
+    color: mediumseagreen;
 }
 
 .results-text {
     margin-bottom: 0 !important;
+}
+
+.facets-heading {
+    margin-bottom: 5px !important;
+    margin-top: 10px !important;
 }
 
 mark {
