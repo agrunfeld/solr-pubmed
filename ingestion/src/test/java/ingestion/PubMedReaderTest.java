@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -68,6 +69,21 @@ public class PubMedReaderTest {
     }
 
     @Test
+    public void testToInputSetsAuthorList() throws Exception {
+        URL url = Resources.getResource(TEST_FILE);
+        File testFile = new File(url.getFile());
+        PubmedArticleSet set = ingestion.unmarshall(testFile);
+        PubmedArticle article = set.getPubmedArticle().get(0);
+        SolrInputDocument document = ingestion.mapToSolrInputDocument(article);
+        SolrInputField field = document.getField("author_list");
+        Collection<java.lang.Object> values = field.getValues();
+        ArrayList expected = new ArrayList<>();
+        Collections.addAll(expected, new String[]{"A Lipton", "R Uzzo", "RJ Amato", "GK Ellis", "B Hakimian", "GD Roodman", "MR Smith"});
+        assertTrue(values.containsAll(expected));
+    }
+
+
+    @Test
     public void testUnmarshallCollection() throws Exception {
         URL url = Resources.getResource(TEST_FILE);
         File testFile = new File(url.getFile());
@@ -109,7 +125,10 @@ public class PubMedReaderTest {
         mockDate.setYear(year);
         citation.setDateCreated(mockDate);
 
+
         Article mockArticle = new Article();
+        AuthorList authorList = new AuthorList();
+        mockArticle.setAuthorList(authorList);
         Abstract mockAbstract = new Abstract();
         mockArticle.setAbstract(mockAbstract);
         citation.setArticle(mockArticle);

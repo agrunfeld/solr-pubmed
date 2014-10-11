@@ -83,7 +83,7 @@ public class SolrIT {
         Collection<SolrInputDocument> collection = pubMedReader.mapToSolrInputDocumentCollection(set);
         assertEquals(4, collection.size());
         client.update(collection);
-        SolrDocumentList documentList = client.getRecords(10);
+        SolrDocumentList documentList = client.getRecords("*:*", 10);
         assertEquals(4, documentList.getNumFound());
         for (int i = 0; i < documentList.getNumFound(); i++) {
             for (int j = i + 1; j < documentList.getNumFound(); j++) {

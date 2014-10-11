@@ -5,7 +5,9 @@
         <fieldType name="uuid" class="solr.UUIDField" indexed="true" stored="true" multiValued="false" required="true"/>
         <fieldType name="date" class="solr.TrieDateField" indexed="false" stored="true"/>
         <fieldType name="string" class="solr.StrField" indexed="false" stored="true" docValues="true"/>
+        <fieldType name="unique_string" class="solr.StrField" indexed="false" multiValued="false" stored="true" docValues="false"/>
         <fieldType name="facet_text" class="solr.StrField" indexed="true" stored="false" docValues="true" multiValued="true"/>
+        <fieldType name="author_text" class="solr.StrField" indexed="true" stored="true" docValues="true" multiValued="true"/>
         <fieldType name="multi_text" class="solr.TextField" indexed="true" stored="true" multiValued="true" omitNorms="false"
                    termVectors="true" termPositions="true">
               <analyzer type="index">
@@ -38,10 +40,11 @@
         <field name="date_created" type="date"/>
         <field name="date_completed" type="date"/>
         <field name="date_revised" type="date"/>
-        <field name="pmid" type="string"/>
+        <field name="pmid" type="unique_string"/>
         <field name="abstract_text" type="multi_text"/>
         <field name="article_title" type="text"/>
-        <field name="author_list" type="multi_text"/>
+        <field name="article_title_original" type="unique_string"/>
+        <field name="author_list" type="author_text"/>
         <field name="journal_issue" type="string"/>
         <field name="journal_title" type="facet_text"/>
         <field name="article_date" type="date"/>
@@ -60,4 +63,6 @@
 
     <!--todo: query parser default operator-->
     <!--todo: copy fields-->
+    <copyField source="article_title" dest="article_title_original"/>
+
 </schema>

@@ -58,6 +58,9 @@ public class PubMedReader {
         if (citation.getArticle().getAbstract() != null) {
             addField(document, "abstract_text", citation.getArticle().getAbstract().getAbstractText());
         }
+        if (citation.getArticle().getAuthorList() != null) {
+            addAuthors(document, "author_list", citation.getArticle().getAuthorList().getAuthor());
+        }
         if (citation.getMeshHeadingList() != null) {
             addMeshHeadings(document, "mesh_heading_list", citation.getMeshHeadingList().getMeshHeading());
         }
@@ -68,6 +71,16 @@ public class PubMedReader {
             addChemicals(document, "gene_symbol_list", citation.getChemicalList().getChemical());
         }
         return document;
+    }
+
+    private void addAuthors(SolrInputDocument document, String name, List<Author> authors) {
+        for (Author author : authors) {
+            try {
+                document.addField(name, formatAuthorName(author));
+            } catch (NullPointerException e) {
+                logger.error(e.getMessage(), e);
+            }
+        }
     }
 
     private void addChemicals(SolrInputDocument document, String name, List<Chemical> chemicals) {
@@ -105,5 +118,28 @@ public class PubMedReader {
     private void addField(SolrInputDocument document, String name, Object object) {
         if (object != null)
             document.addField(name, object);
+    }
+
+    /* todo: ugh so messy, need to use XSLT */
+    private String formatAuthorName(Author author) {
+        String lastName = null, foreName = null, initials = null, suffix = null, collectiveName = null;
+        for (Object o : author.getLastNameOrForeNameOrInitialsOrSuffixOrNameIDOrCollectiveName()) {
+            if (o instanceof LastName) {
+                lastName = ((LastName) o).getvalue();
+            }
+            if (o instanceof Initials) {
+                initials = ((Initials) o).getvalue();
+            }
+            if (o instanceof Suffix) {
+                suffix = ((Suffix) o).getvalue();
+            }
+            if (o instanceof CollectiveName) {
+                collectiveName = ((CollectiveName) o).getvalue();
+            }
+        }
+        if (lastName != null && initials != null)
+            return String.format("%s %s", initials, lastName);
+        else
+            throw new NullPointerException("Author must contain at least last and initials");
     }
 }

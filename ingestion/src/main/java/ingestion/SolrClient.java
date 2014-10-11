@@ -23,7 +23,7 @@ public class SolrClient {
     public SolrClient(boolean useConcurrentUpdate) {
         if (useConcurrentUpdate) {
             /*TODO: determine parameters from environment*/
-            this.solrServer = new ConcurrentUpdateSolrServer(BASE_URL, 30000, 4);
+            this.solrServer = new ConcurrentUpdateSolrServer(BASE_URL, 400000, 4);
         } else {
             this.solrServer = new HttpSolrServer(BASE_URL);
         }
@@ -50,8 +50,8 @@ public class SolrClient {
         return solrServer.query(q).getResults().getNumFound();
     }
 
-    public SolrDocumentList getRecords(int maxRows) throws SolrServerException {
-        SolrQuery q = new SolrQuery("*:*");
+    public SolrDocumentList getRecords(String query, int maxRows) throws SolrServerException {
+        SolrQuery q = new SolrQuery(query);
         q.setRows(maxRows);
         return solrServer.query(q).getResults();
     }

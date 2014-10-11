@@ -14,6 +14,13 @@
         </lst>
     </requestHandler>
 
+    <!-- XSLT Update Request Handler
+     Transforms incoming XML with stylesheet identified by tr=
+     -->
+    <requestHandler name="/update/xslt"
+                    startup="lazy"
+                    class="solr.XsltUpdateRequestHandler"/>
+
     <requestHandler name="/select" class="solr.SearchHandler">
         <!-- default values for query parameters can be specified, these
              will be overridden by parameters in the request
