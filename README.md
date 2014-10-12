@@ -31,7 +31,7 @@ Indexing the sample records
 -------------
 To index a small collection MEDLINE records run the following script in the ingestion module:
 
-    `TestScripts#ImportSampleData()`
+    TestScripts#ImportSampleData()
 
 Fetching PubMed and PMC records
 -------------
@@ -41,16 +41,16 @@ We recommend using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtu
 
 To ensure you have the neccesary python dependencies needed to run the scripts, run the following command in the root directory of the retrieval module:
 
-    `pip install -r requirements.txt`
+    pip install -r requirements.txt
 
 Running the Flask application
 -------------
 The webapp directory contains a [Flask](http://flask.pocoo.org/)-based search UI, which provides several features including faceted searching and highlighting. Again make sure the required python packages are installed using pip:
 
-    `pip install -r requirements.txt`
+    pip install -r requirements.txt
 
 To run the app:
 
-    `python app.py`
+    python app.py
 
 The Flask server will run on [http://localhost:5000](http://localhost:5000) by default.
