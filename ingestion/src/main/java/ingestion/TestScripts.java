@@ -79,7 +79,7 @@ public class TestScripts {
 
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void timedUpdate() throws Exception {
         long startTime = System.nanoTime();
         importLastYear(false);
         long endTime = System.nanoTime();
@@ -92,7 +92,10 @@ public class TestScripts {
         duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
         System.out.println("Concurrent update of 820411 records took " + duration / 1E9 + " seconds");
 
+    }
 
+    public static void main(String[] args) throws Exception {
+        importSampleDate();
     }
 
  }

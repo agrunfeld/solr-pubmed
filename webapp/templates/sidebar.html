@@ -1,5 +1,7 @@
 {% if facets.facet_fields %}
     {% for facet_key in facets.facet_fields %}
-        {% include 'facet_field.html' %}
+        {% if facets.facet_fields[facet_key] %}
+            {% include 'facet_field.html' %}
+        {% endif %}
     {% endfor %}
 {% endif %}

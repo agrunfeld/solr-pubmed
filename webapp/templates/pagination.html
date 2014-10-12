@@ -2,9 +2,10 @@
     {{ url_for('index', page=page, q=query) }}
 {%- endmacro %}
 
+{# todo: write test and fix last page bug#}
 {% with %}
     {% set max_buttons = 10 %}
-    {% set pages = ceil(results.hits / results_per_page) %}
+    {% set pages = ceil(results.hits / results_per_page) | int %}
 
     <ul class="button-group">
         {# previous page button #}

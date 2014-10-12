@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, url_for
-from flask_bootstrap import Bootstrap
 import pysolr
 import math
 
@@ -20,7 +19,6 @@ def get_facet_query(facet_field, facet_value):
 # TODO: Flask-Appconfig
 def create_app():
     app = Flask(__name__)
-    Bootstrap(app)
     solr = pysolr.Solr('http://localhost:8983/core0/', timeout=10)
 
     # in a real app, these should be configured through Flask-Appconfig
@@ -60,7 +58,7 @@ def create_app():
                                    page=page,
                                    )
         else:
-            return render_template('index.html', results_per_page=10)
+            return render_template('landing.html')
 
     app.jinja_env.globals.update(max=max)
     app.jinja_env.globals.update(min=min)

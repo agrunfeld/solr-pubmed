@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{{ url_for('.static', filename='css/groundwork.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('.static', filename='css/custom.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="homepage_container">
+        <div class="logo_container">
+            <a class="logo" title="Genome Sciences Centre" href="http://www.bcgsc.ca/"></a>
+        </div>
+
+        <div class="search_container">
+            <form class="search-bar" method="GET" action="/">
+                <input class="search_input" name="q" tabindex="1" type="text">
+                <button class="search_button" tabindex="2" type="submit">
+                    <i class="icon-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="description">
+            Description
+            <span class="homepage_links">
+                <a href="#" class="homepage_link">Link 1</a>
+                <span class="homepage_link_separator">|</span>
+                <a href="#" class="homepage_link">Link 2</a>
+            </span>
+        </div>
+    </div>
+
+    <div class="homepage-footer">
+        <div class="modal">
+            <a href="#" class="homepage_button_icon  homepage_button" style="text-decoration: none">
+                <i class="icon-bar-chart icon-3x"></i>
+                <span>Metrics</span>
+            </a>
+        </div>
+        <div class="modal">
+            <a href="#" class="homepage_button_icon  homepage_button" style="text-decoration: none">
+                <i class="icon-envelope icon-3x"></i>
+                <span>Contact</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
