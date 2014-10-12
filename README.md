@@ -1,8 +1,11 @@
 [![Build Status](https://travis-ci.org/apurdy/solr-project.svg?branch=master)](https://travis-ci.org/apurdy/solr-project)
 =========
 
-An Apache Solr based tool for fetching, indexing and searching PubMed/MEDLINE records. 
-* Solr: http://lucene.apache.org/solr/
+An [Apache Solr](http://lucene.apache.org/solr/) based tool for fetching, indexing and searching PubMed/MEDLINE records. 
+Requirements
+---------
+
+[Apache Maven](http://maven.apache.org/download.cgi)
 
 Building
 ---------
