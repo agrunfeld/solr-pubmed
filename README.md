@@ -51,6 +51,8 @@ Running the Flask application
 The webapp directory contains a [Flask](http://flask.pocoo.org/)-based search UI, which provides several features including faceted searching and highlighting. Again make sure the required python packages are installed using pip:
 
     pip install -r requirements.txt
+    
+If you're on Windows using the Anaconda python distribution, you may run into issues installing the MarkupSafe package. If so, you can solve this issue by modifying `cygwinccompiler.py` as desribed here: [http://bugs.python.org/issue21821](http://bugs.python.org/issue21821)
 
 To run the app:
 
