@@ -35,7 +35,7 @@ To index a small collection MEDLINE records run the following script in the inge
 
 Fetching PubMed and PMC records
 -------------
-The retrieval directory contains python scripts for downloading pubmed records from Entrez E-Utils and PMC Open Access Web service. 
+The retrieval directory contains python scripts for downloading PubMed records using the Entrez E-Utils and PMC Open Access Web services. 
 
 We recommend using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) to manage your python development environments. 
 
