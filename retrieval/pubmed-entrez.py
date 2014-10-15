@@ -1,36 +1,32 @@
 from http.client import IncompleteRead, BadStatusLine
+from urllib.error import URLError
 from Bio import Entrez
 import os
 import gzip
 import logging
 import progressbar
+from time import sleep
 
-
-# set up logging to file - see previous section for more details
+# root logger, append to file
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
                     datefmt='%m-%d %H:%M',
                     filename='fetch.log',
-                    filemode='w')
+                    filemode='a')
 # define a Handler which writes INFO messages or higher to the sys.stderr
 console = logging.StreamHandler()
 console.setLevel(logging.INFO)
-# set a format which is simpler for console use
 formatter = logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s')
-# tell the handler to use this format
 console.setFormatter(formatter)
 # add the handler to the root logger
 logging.getLogger('').addHandler(console)
-# create console handler with a higher log level
-ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
 
 BASE_PATH = "/home/alex/medline"
 BATCH_SIZE = 10000
 
 Entrez.email = "apurdy@uvic.ca"
 
-for year in range(2007, 1800, -1):
+for year in range(1952, 1800, -1):
 
     search_results = Entrez.read(Entrez.esearch(db="pubmed",
                                                 term="{0:d}[edat]".format(year),
@@ -70,6 +66,9 @@ for year in range(2007, 1800, -1):
                     fetch_handle.close()
             except BadStatusLine:
                 logging.error("Fail to read records {0:d} to {1:d}".format(start + 1, end))
+            except URLError:
+                logging.error("Failed to connect to fetch results {0:d} to {1:d}".format(start + 1, end))
+
 
 
         bar.update(end)
