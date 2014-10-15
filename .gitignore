@@ -69,3 +69,7 @@ docs/_build/
 
 # Lucene indices
 solr/core0/data/
+
+# Solr lib/dist exception
+!solr/dist
+!solr/lib
