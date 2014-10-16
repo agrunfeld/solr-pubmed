@@ -3,18 +3,19 @@ package ingestion;
 import com.google.common.io.Resources;
 import medline.MedlineCitationSet;
 import org.apache.log4j.BasicConfigurator;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
 import org.codehaus.plexus.util.FileUtils;
 import pubmed.PubmedArticleSet;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
+import javax.xml.bind.JAXBException;
+import java.io.*;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -22,7 +23,8 @@ import java.util.zip.GZIPInputStream;
  */
 public class TestScripts {
     public static final String SAMPLE_FILE = "samples/medsamp2014.xml";
-    public static final String MEDLINE = "/home/alex/medline/2014";
+    public static final String MEDLINE_2014 = "/home/alex/medline/2014";
+    public static final String MEDLINE = "/home/alex/medline";
 
     public static void deleteRecords() throws Exception {
         BasicConfigurator.configure();
@@ -41,6 +43,51 @@ public class TestScripts {
         client.update(collection);
 
     }
+    public static void importEverything(boolean concurrent) throws JAXBException, IOException, SolrServerException {
+//        BasicConfigurator.configure();
+        SolrClient client = new SolrClient(concurrent);
+        client.deleteRecords();
+        PubMedReader pubMedReader = new PubMedReader();
+
+        File medline = FileUtils.getFile(MEDLINE);
+        File[] directories = medline.listFiles();
+
+        Arrays.sort(directories, new Comparator() {
+            @Override
+            public int compare(Object f1, Object f2) {
+                String fileName1 = ((File) f1).getName();
+                String fileName2 = ((File) f2).getName();
+
+                int fileId1 = Integer.parseInt(fileName1);
+                int fileId2 = Integer.parseInt(fileName2);
+
+                return fileId2 - fileId1;
+            }
+        });
+
+
+        for (File directory : directories) {
+            if (directory.isDirectory()) {
+                File[] zippedMedline = directory.listFiles();
+                System.out.println("Year: " + directory.getName() + " number of files: " + zippedMedline.length);
+                for (File aZippedMedline : zippedMedline) {
+                    System.out.println(aZippedMedline.getName());
+                    try {
+                        InputStream fileStream = new FileInputStream(aZippedMedline);
+                        GZIPInputStream gzipStream = new GZIPInputStream(fileStream);
+                        PubmedArticleSet set = pubMedReader.unmarshall(gzipStream);
+                        Collection<SolrInputDocument> collection = pubMedReader.mapToSolrInputDocumentCollection(set);
+                        client.update(collection);
+                        gzipStream.close();
+                        fileStream.close();
+                    } catch (JAXBException | IOException e) {
+                        System.out.println("error indexing zippedMedline[j].getName()");
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
 
 
     public static void importLastYear(boolean concurrent) throws Exception {
@@ -49,7 +96,7 @@ public class TestScripts {
         client.deleteRecords();
         PubMedReader pubMedReader = new PubMedReader();
 
-        File medline = FileUtils.getFile(MEDLINE);
+        File medline = FileUtils.getFile(MEDLINE_2014);
         File[] zippedMedline = medline.listFiles();
         System.out.println(zippedMedline.length);
         for (int i = 0; i < zippedMedline.length; i++) {
@@ -95,7 +142,7 @@ public class TestScripts {
     }
 
     public static void main(String[] args) throws Exception {
-        importSampleDate();
+        importEverything(true);
     }
 
  }
