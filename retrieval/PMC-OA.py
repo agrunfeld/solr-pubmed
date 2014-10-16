@@ -7,24 +7,19 @@ import os
 import logging
 
 
-# set up logging to file - see previous section for more details
+# todo: module refactoring, cli
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
                     datefmt='%m-%d %H:%M',
-                    filename='fetch.log',
-                    filemode='w')
+                    filename='pmc-oa.log',
+                    filemode='a')
 # define a Handler which writes INFO messages or higher to the sys.stderr
 console = logging.StreamHandler()
 console.setLevel(logging.INFO)
-# set a format which is simpler for console use
 formatter = logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s')
-# tell the handler to use this format
 console.setFormatter(formatter)
 # add the handler to the root logger
 logging.getLogger('').addHandler(console)
-# create console handler with a higher log level
-ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
 
 
 ## More info: http://www.ncbi.nlm.nih.gov/pmc/tools/oa-service/
@@ -53,8 +48,8 @@ if __name__ == '__main__':
 
         # request parameters
         # 'id': 'PMC13901',
-        # 'from': datetime.date(1800, 1, 1),
-        # 'until': datetime.date(1800, 1, 1),
+        # 'from': YYYY-MM-DD HH:MM:SS 
+        # 'until': YYYY-MM-DD HH:MM:SS 
         # 'format': 'tgz|pdf'
         params = {
             'from': datetime.date(year=year, month=1, day=1),
