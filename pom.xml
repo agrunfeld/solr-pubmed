@@ -41,6 +41,24 @@
             <artifactId>jcabi-log</artifactId>
             <version>0.14.3</version>
         </dependency>
+        <!--regression testing framework-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+        <!--Mock objects library for java-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+        </dependency>
+        <!--Google's core and expanded libraries. Includes utility classes, collections, io classes, etc-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
