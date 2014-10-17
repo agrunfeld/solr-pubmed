@@ -16,6 +16,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -44,6 +47,24 @@ public class TestScripts {
 
     }
     public static void importEverything(boolean concurrent) throws JAXBException, IOException, SolrServerException {
+
+        Logger logger = Logger.getLogger("MyLog");
+        FileHandler fh;
+
+        try {
+
+            // This block configure the logger with handler and formatter
+            fh = new FileHandler("/home/alex/import.log");
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+
+
+        } catch (SecurityException | IOException e) {
+            e.printStackTrace();
+        }
+
+
 //        BasicConfigurator.configure();
         SolrClient client = new SolrClient(concurrent);
         client.deleteRecords();
@@ -69,9 +90,7 @@ public class TestScripts {
         for (File directory : directories) {
             if (directory.isDirectory()) {
                 File[] zippedMedline = directory.listFiles();
-                System.out.println("Year: " + directory.getName() + " number of files: " + zippedMedline.length);
                 for (File aZippedMedline : zippedMedline) {
-                    System.out.println(aZippedMedline.getName());
                     try {
                         InputStream fileStream = new FileInputStream(aZippedMedline);
                         GZIPInputStream gzipStream = new GZIPInputStream(fileStream);
@@ -81,7 +100,7 @@ public class TestScripts {
                         gzipStream.close();
                         fileStream.close();
                     } catch (JAXBException | IOException e) {
-                        System.out.println("error indexing zippedMedline[j].getName()");
+                        logger.severe("error indexing" +  aZippedMedline +  "for year " + directory.getName());
                         e.printStackTrace();
                     }
                 }
