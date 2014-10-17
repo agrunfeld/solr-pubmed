@@ -40,7 +40,26 @@
     </dependencies>
     <build>
         <plugins>
-            <!--todo: fix log4j configuration-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0-alpha-2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>set-system-properties</goal>
+                        </goals>
+                        <configuration>
+                            <properties>
+                                <property>
+                                    <name>log4j.configuration</name>
+                                    <value>${project.baseUri}/resources/log4j.properties</value>
+                                </property>
+                            </properties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -54,10 +73,6 @@
                     <stopPort>9966</stopPort>
                     <daemon>true</daemon>
                     <systemProperties>
-                        <systemProperty>
-                            <key>log4j.configuration</key>
-                            <value>file:${project.basedir}/../log4j.properties</value>
-                        </systemProperty>
                         <systemProperty>
                             <key>solr.solr.home</key>
                             <value>${project.basedir}/../solr</value>
@@ -82,12 +97,6 @@
                         <groupId>org.slf4j</groupId>
                         <artifactId>jul-to-slf4j</artifactId>
                         <version>${slf4j.version}</version>
-                    </dependency>
-                    <!--Wrapper of SLF4J and a few supplementary logging classes-->
-                    <dependency>
-                        <groupId>com.jcabi</groupId>
-                        <artifactId>jcabi-log</artifactId>
-                        <version>0.14.3</version>
                     </dependency>
                 </dependencies>
                 <executions>
