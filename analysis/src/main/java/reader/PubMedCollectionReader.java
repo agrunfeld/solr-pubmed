@@ -12,6 +12,8 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
 import pubmed.PubmedArticle;
 import pubmed.PubmedArticleSet;
+import types.Section;
+import types.Section_Type;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
@@ -84,11 +86,11 @@ public class PubMedCollectionReader extends JCasCollectionReader_ImplBase {
 
         if (article.getMedlineCitation().getArticle().getAbstract() != null) {
             String abstractText = article.getMedlineCitation().getArticle().getAbstract().getAbstractText();
-            builder.add(abstractText);
+            builder.add(abstractText, Section.class);
         }
 
         String articleTitle = article.getMedlineCitation().getArticle().getArticleTitle();
-        builder.add(articleTitle);
+        builder.add(articleTitle, Section.class);
         builder.close();
     }
 }

@@ -1,6 +1,7 @@
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.jcas.JCas;
+import org.junit.After;
 import reader.PubMedCollectionReader;
 
 import java.io.File;
@@ -20,6 +21,12 @@ public static final String TEST_COLLECTION = "/collection";
         collectionReader = (PubMedCollectionReader) CollectionReaderFactory.createReader(
                 PubMedCollectionReader.class,
                 PubMedCollectionReader.PARAM_XML_DIRECTORY, collection.getAbsolutePath());
+    }
+
+    @After
+    public void tearDown() throws Exception {
+
+
     }
 
     @org.junit.Test
