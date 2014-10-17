@@ -107,9 +107,7 @@ public class TmVarAnnotator extends JCasAnnotator_ImplBase {
         try {
             Process process = p.start();
             try {
-                int exitValue = process.waitFor();
-
-                // System.out.println("\n\nExit Value is " + exitValue);
+                process.waitFor();
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -145,7 +143,6 @@ public class TmVarAnnotator extends JCasAnnotator_ImplBase {
 
                     TmVarMutation mutation = new TmVarMutation(aJCas, begining, ending);
 
-                    mutation.setText(result[3]);
                     mutation.setSequencetype(result[4]);
                     mutation.setSummary(result[5]);
 
