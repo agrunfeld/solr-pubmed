@@ -7,9 +7,12 @@
     <artifactId>project</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>ingestion</module>
+        <module>analysis</module>
     </modules>
+
     <properties>
         <slf4j.version>1.7.7</slf4j.version>
         <jaxb2.version>0.9.0</jaxb2.version>
