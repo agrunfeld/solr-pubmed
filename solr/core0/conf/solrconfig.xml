@@ -2,8 +2,8 @@
 <config>
     <luceneMatchVersion>4.10.0</luceneMatchVersion>
 
-    <lib dir="/home/alex/dev/solr-project/solr/lib/" regex=".*\.jar" />
-    <lib dir="/home/alex/dev/solr-project/solr/dist/" regex="solr-clustering-\d.*\.jar" />
+    <lib dir="../lib/" regex=".*\.jar" />
+    <lib dir="../dist/" regex="solr-clustering-\d.*\.jar" />
 
     <updateRequestProcessorChain name="uuid">
         <processor class="solr.UUIDUpdateProcessorFactory">
