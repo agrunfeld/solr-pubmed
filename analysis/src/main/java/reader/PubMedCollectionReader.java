@@ -13,7 +13,6 @@ import org.apache.uima.util.Progress;
 import pubmed.PubmedArticle;
 import pubmed.PubmedArticleSet;
 import types.Section;
-import types.Section_Type;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
@@ -47,6 +46,20 @@ public class PubMedCollectionReader extends JCasCollectionReader_ImplBase {
             e.printStackTrace();
         }
     }
+    //todo: initialize document language from article metadata
+    private void initializeCas(JCas jCas, PubmedArticle article) {
+        JCasBuilder builder = new JCasBuilder(jCas);
+        jCas.setDocumentLanguage("en");
+
+        if (article.getMedlineCitation().getArticle().getAbstract() != null) {
+            String abstractText = article.getMedlineCitation().getArticle().getAbstract().getAbstractText();
+            builder.add(abstractText, Section.class);
+        }
+
+        String articleTitle = article.getMedlineCitation().getArticle().getArticleTitle();
+        builder.add(articleTitle, Section.class);
+        builder.close();
+    }
 
     @Override
     public void getNext(JCas jCas) throws IOException, CollectionException {
@@ -79,18 +92,5 @@ public class PubMedCollectionReader extends JCasCollectionReader_ImplBase {
     @Override
     public Progress[] getProgress() {
         return new Progress[0];
-    }
-
-    private void initializeCas(JCas jCas, PubmedArticle article) {
-        JCasBuilder builder = new JCasBuilder(jCas);
-
-        if (article.getMedlineCitation().getArticle().getAbstract() != null) {
-            String abstractText = article.getMedlineCitation().getArticle().getAbstract().getAbstractText();
-            builder.add(abstractText, Section.class);
-        }
-
-        String articleTitle = article.getMedlineCitation().getArticle().getArticleTitle();
-        builder.add(articleTitle, Section.class);
-        builder.close();
     }
 }

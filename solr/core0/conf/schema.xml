@@ -52,6 +52,7 @@
         <field name="keyword_list" type="string"/>
         <field name="mesh_heading_list" type="facet_text"/>
         <field name="chemical_list" type="string"/>
+        <field name="mutation" type="string"/>
 
         <!--todo: dynamic fields-->
 

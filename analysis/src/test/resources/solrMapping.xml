@@ -1,0 +1,7 @@
+<solrMapping>
+    <fsMapping>
+        <type name="types.Mutation">
+            <map feature="coveredText" field="mutation"/>
+        </type>
+    </fsMapping>
+</solrMapping>

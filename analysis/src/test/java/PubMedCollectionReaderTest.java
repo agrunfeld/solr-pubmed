@@ -1,5 +1,6 @@
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.factory.JCasFactory;
+import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.jcas.JCas;
 import org.junit.After;
 import reader.PubMedCollectionReader;
@@ -10,7 +11,8 @@ import java.net.URL;
 import static org.junit.Assert.*;
 
 public class PubMedCollectionReaderTest {
-public static final String TEST_COLLECTION = "/collection";
+    public static final String TEST_COLLECTION = "/collection";
+    public static final String TYPE_SYSTEM = "/TypeSystem.xml";
     private PubMedCollectionReader collectionReader;
 
 
@@ -18,8 +20,13 @@ public static final String TEST_COLLECTION = "/collection";
     public void setUp() throws Exception {
         URL url = this.getClass().getResource(TEST_COLLECTION);
         File collection = new File(url.getFile());
+
+        url = this.getClass().getResource(TYPE_SYSTEM);
+        File typeSystem = new File(url.getFile());
+
         collectionReader = (PubMedCollectionReader) CollectionReaderFactory.createReader(
                 PubMedCollectionReader.class,
+                TypeSystemDescriptionFactory.createTypeSystemDescriptionFromPath(typeSystem.getAbsolutePath()),
                 PubMedCollectionReader.PARAM_XML_DIRECTORY, collection.getAbsolutePath());
     }
 

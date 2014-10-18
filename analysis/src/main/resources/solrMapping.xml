@@ -1,0 +1,10 @@
+<solrMapping>
+    <!--optional-->
+    <!--<documentText>text</documentText>-->
+    <!--<documentLanguage>language</documentLanguage>-->
+    <fsMapping>
+        <type name="types.Mutation">
+            <map feature="coveredText" field="mutation"/>
+        </type>
+    </fsMapping>
+</solrMapping>
