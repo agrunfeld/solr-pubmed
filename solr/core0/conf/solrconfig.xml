@@ -47,6 +47,24 @@
             <str name="facet.mincount">1</str>
             <str name="facet.limit">10</str>
 
+            <!--similar documents defaults-->
+            <!--The fields to use for similarity-->
+           <str name="mlt.fl">article_title, abstract_text</str>
+            <!--Minimum Term Frequency - the frequency below which terms will be ignored in the source doc.-->
+           <str name="mlt.mintf">2</str>
+            <!--Minimum Document Frequency - the frequency at which words will be ignored which do not occur in at least this many docs.-->
+           <str name="mlt.mintf">5</str>
+            <!--minimum word length below which words will be ignored.-->
+           <str name="mlt.mintf">0</str>
+            <!--maximum word length above which words will be ignored.-->
+           <str name="mlt.mintf">0</str>
+            <!--maximum number of query terms that will be included in any generated query.-->
+           <str name="mlt.mintf">25</str>
+            <!--maximum number of query terms that will be included in any generated query.-->
+           <str name="mlt.mintf">25</str>
+
+
+
             <!--default search field-->
             <str name="df">abstract_text</str>
         </lst>
