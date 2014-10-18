@@ -6,6 +6,7 @@ import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.jcas.JCas;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import types.Section;
 import types.TmVarMutation;
@@ -19,7 +20,6 @@ import static org.junit.Assert.assertEquals;
 
 public class TmVarAnnotatorTest {
     public static final String TYPE_SYSTEM = "/TypeSystem.xml";
-    private File typeSystem;
     private JCas sampleJCas;
     private static final String[] expected = {
             "c.35delG",
@@ -34,7 +34,7 @@ public class TmVarAnnotatorTest {
     @Before
     public void setUp() throws Exception {
         URL url = this.getClass().getResource(TYPE_SYSTEM);
-        typeSystem = new File(url.getFile());
+        File typeSystem = new File(url.getFile());
 
         sampleJCas =  JCasFactory.createJCas(TypeSystemDescriptionFactory.createTypeSystemDescriptionFromPath(typeSystem.getAbsolutePath()));
 
@@ -60,6 +60,7 @@ public class TmVarAnnotatorTest {
 
     }
 
+    @Ignore("need to package tmVar")
     @Test
     public void testProcess() throws Exception {
         AnalysisEngine tmVar =
