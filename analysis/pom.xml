@@ -14,9 +14,34 @@
     <properties>
         <ccp.version>3.3</ccp.version>
         <nlp-pipelines.version>0.5.1</nlp-pipelines.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <solr.port>8983</solr.port>
+        <solr.version>4.10.0</solr.version>
+        <jetty.version>9.2.2.v20140723</jetty.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <jaxb2.version>0.9.0</jaxb2.version>
     </properties>
 
     <dependencies>
+        <!--Maven JAXB 2.x Plugin-->
+        <dependency>
+            <groupId>org.jvnet.jaxb2.maven2</groupId>
+            <artifactId>maven-jaxb2-plugin</artifactId>
+            <version>${jaxb2.version}</version>
+        </dependency>
+        <!--Solrj is a java client to access solr-->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>4.10.0</version>
+        </dependency>
+        <!--Date and time library to replace JDK date handling-->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.4</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.uima</groupId>
             <artifactId>uimafit-core</artifactId>
@@ -43,13 +68,6 @@
             <artifactId>TikaAnnotator</artifactId>
             <version>2.3.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.gsc</groupId>
-            <artifactId>ingestion</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-
     </dependencies>
 
 <build>
@@ -72,6 +90,111 @@
             </executions>
 
         </plugin>
+
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>properties-maven-plugin</artifactId>
+            <version>1.0-alpha-2</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>set-system-properties</goal>
+                    </goals>
+                    <configuration>
+                        <properties>
+                            <property>
+                                <name>log4j.configuration</name>
+                                <value>${project.baseUri}/resources/log4j.properties</value>
+                            </property>
+                        </properties>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-maven-plugin</artifactId>
+            <version>9.2.3.v20140905</version>
+            <configuration>
+                <httpConnector>
+                    <port>${solr.port}</port>
+                </httpConnector>
+                <war>${project.basedir}/libs/solr-${solr.version}.war</war>
+                <stopKey>stop</stopKey>
+                <stopPort>9966</stopPort>
+                <daemon>true</daemon>
+                <systemProperties>
+                    <systemProperty>
+                        <key>solr.solr.home</key>
+                        <value>${project.basedir}/../solr</value>
+                    </systemProperty>
+                </systemProperties>
+            </configuration>
+            <dependencies>
+                <!--SLF4J LOG4J-12 Binding-->
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <version>${slf4j.version}</version>
+                </dependency>
+                <!--JCL 1.1.1 implemented over SLF4J-->
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                    <version>${slf4j.version}</version>
+                </dependency>
+                <!--JUL to SLF4J bridge-->
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jul-to-slf4j</artifactId>
+                    <version>${slf4j.version}</version>
+                </dependency>
+            </dependencies>
+            <executions>
+                <execution>
+                    <id>start-jetty</id>
+                    <phase>pre-integration-test</phase>
+                    <goals>
+                        <goal>deploy-war</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>stop-jetty</id>
+                    <phase>post-integration-test</phase>
+                    <goals>
+                        <goal>stop</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+        <!--used to generate POJOs from document type definitions (DTDs)-->
+        <!--<plugin>-->
+        <!--<groupId>org.jvnet.jaxb2.maven2</groupId>-->
+        <!--<artifactId>maven-jaxb2-plugin</artifactId>-->
+        <!--<version>${jaxb2.version}</version>-->
+        <!--<executions>-->
+        <!--<execution>-->
+        <!--<goals>-->
+        <!--<goal>generate</goal>-->
+        <!--</goals>-->
+        <!--</execution>-->
+        <!--</executions>-->
+        <!--<configuration>-->
+        <!--&lt;!&ndash;  if you want to put DTD somewhere else-->
+        <!--<schemaDirectory>src/main/jaxb</schemaDirectory>-->
+        <!--&ndash;&gt;-->
+        <!--&lt;!&ndash;<extension>true</extension>&ndash;&gt;-->
+        <!--<schemaLanguage>DTD</schemaLanguage>-->
+        <!--<schemaIncludes>-->
+        <!--<value>schema/pubmed_100101.dtd</value>-->
+        <!--</schemaIncludes>-->
+        <!--<bindingIncludes>-->
+        <!--<value>bindings/*.jaxb</value>-->
+        <!--</bindingIncludes>-->
+        <!--</configuration>-->
+        <!--</plugin>-->
+
     </plugins>
 </build>
 

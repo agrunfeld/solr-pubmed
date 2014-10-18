@@ -1,13 +1,11 @@
 package ingestion;
 
 import com.google.common.io.Resources;
-import pubmed.*;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.common.SolrInputField;
 import org.junit.Before;
 import org.junit.Test;
-import pubmed.PubmedArticle;
-import pubmed.PubmedArticleSet;
+import pubmed.*;
 
 import java.io.File;
 import java.io.InputStream;

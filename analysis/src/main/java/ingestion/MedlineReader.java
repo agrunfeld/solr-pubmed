@@ -1,6 +1,5 @@
 package ingestion;
 
-import medline.Date;
 import medline.*;
 import org.apache.solr.common.SolrInputDocument;
 import org.slf4j.Logger;
@@ -9,7 +8,10 @@ import org.slf4j.LoggerFactory;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;

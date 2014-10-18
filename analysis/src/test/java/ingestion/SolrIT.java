@@ -3,17 +3,17 @@ package ingestion;
 import com.google.common.io.Resources;
 import medline.MedlineCitationSet;
 import org.apache.log4j.BasicConfigurator;
-import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pubmed.PubmedArticleSet;
 
 import java.util.Collection;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class SolrIT {
     public static final String MEDLINE_SAMPLE = "samples/medsamp2014.xml";

@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>ingestion</module>
         <module>analysis</module>
     </modules>
 

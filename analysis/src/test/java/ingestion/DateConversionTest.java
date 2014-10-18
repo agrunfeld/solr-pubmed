@@ -1,13 +1,9 @@
 package ingestion;
 
-import medline.Date;
-import medline.DateCreated;
-import medline.Day;
-import medline.Month;
-import medline.Year;
+import medline.*;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class DateConversionTest {
 

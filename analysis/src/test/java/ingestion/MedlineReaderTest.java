@@ -2,12 +2,10 @@ package ingestion;
 
 import com.google.common.io.Resources;
 import medline.*;
-import org.apache.commons.io.FileUtils;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.common.SolrInputField;
 import org.junit.Before;
 import org.junit.Test;
-import static org.mockito.Mockito.*;
 
 import java.io.File;
 import java.io.InputStream;
@@ -17,6 +15,8 @@ import java.util.Collection;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class MedlineReaderTest {
 
