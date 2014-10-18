@@ -88,7 +88,8 @@ public class PubMedReaderTest {
         PubmedArticleSet set = ingestion.unmarshall(testFile);
         PubmedArticle article = set.getPubmedArticle().get(0);
         PubmedArticle anotherArticle = set.getPubmedArticle().get(1);
-        assertNotEquals(article.getMedlineCitation().getArticle().getJournal().getTitle(), anotherArticle.getMedlineCitation().getArticle().getJournal().getTitle());
+        assertEquals("Journal of the National Comprehensive Cancer Network : JNCCN", article.getMedlineCitation().getArticle().getJournal().getTitle());
+        assertEquals("International journal of clinical practice. Supplement", anotherArticle.getMedlineCitation().getArticle().getJournal().getTitle());
     }
 
     @Test

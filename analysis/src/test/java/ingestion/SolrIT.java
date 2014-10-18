@@ -13,7 +13,6 @@ import pubmed.PubmedArticleSet;
 import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class SolrIT {
     public static final String MEDLINE_SAMPLE = "samples/medsamp2014.xml";
@@ -85,10 +84,5 @@ public class SolrIT {
         client.update(collection);
         SolrDocumentList documentList = client.getRecords("*:*", 10);
         assertEquals(4, documentList.getNumFound());
-        for (int i = 0; i < documentList.getNumFound(); i++) {
-            for (int j = i + 1; j < documentList.getNumFound(); j++) {
-                assertNotEquals(documentList.get(i).get("article_title"), documentList.get(j).get("article_title"));
-            }
-        }
     }
 }

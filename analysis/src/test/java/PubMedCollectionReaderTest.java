@@ -27,7 +27,6 @@ public class PubMedCollectionReaderTest {
 
         collectionReader = (PubMedCollectionReader) CollectionReaderFactory.createReader(
                 PubMedCollectionReader.class,
-                TypeSystemDescriptionFactory.createTypeSystemDescriptionFromPath(typeSystem.getAbsolutePath()),
                 PubMedCollectionReader.PARAM_XML_DIRECTORY, collection.getAbsolutePath());
     }
 
@@ -41,9 +40,7 @@ public class PubMedCollectionReaderTest {
     public void testGetNext() throws Exception {
         JCas jCas = JCasFactory.createJCas(TypeSystemDescriptionFactory.createTypeSystemDescriptionFromPath(typeSystem.getAbsolutePath()));
         collectionReader.getNext(jCas);
-
         assertNotNull(jCas.getDocumentText());
-
     }
 
     @org.junit.Test
