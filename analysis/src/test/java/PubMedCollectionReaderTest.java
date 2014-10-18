@@ -14,6 +14,7 @@ public class PubMedCollectionReaderTest {
     public static final String TEST_COLLECTION = "/collection";
     public static final String TYPE_SYSTEM = "/TypeSystem.xml";
     private PubMedCollectionReader collectionReader;
+    private File typeSystem;
 
 
     @org.junit.Before
@@ -22,7 +23,7 @@ public class PubMedCollectionReaderTest {
         File collection = new File(url.getFile());
 
         url = this.getClass().getResource(TYPE_SYSTEM);
-        File typeSystem = new File(url.getFile());
+        typeSystem = new File(url.getFile());
 
         collectionReader = (PubMedCollectionReader) CollectionReaderFactory.createReader(
                 PubMedCollectionReader.class,
@@ -38,7 +39,7 @@ public class PubMedCollectionReaderTest {
 
     @org.junit.Test
     public void testGetNext() throws Exception {
-        JCas jCas = JCasFactory.createJCas();
+        JCas jCas = JCasFactory.createJCas(TypeSystemDescriptionFactory.createTypeSystemDescriptionFromPath(typeSystem.getAbsolutePath()));
         collectionReader.getNext(jCas);
 
         assertNotNull(jCas.getDocumentText());
