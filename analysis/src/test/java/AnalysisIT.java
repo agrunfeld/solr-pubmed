@@ -18,6 +18,7 @@ import org.apache.uima.solrcas.SolrCASConsumer;
 import org.apache.uima.tika.FileSystemCollectionReader;
 import org.apache.uima.tika.TIKAWrapper;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import reader.PubMedCollectionReader;
 
@@ -50,6 +51,7 @@ public class AnalysisIT {
         CASMappingStrategiesRepository.getInstance().register(casMappingStrategy, "so");
     }
 
+    @Ignore("not ready yet")
     @Test
     public void testPipeline() throws Exception {
         CollectionReaderDescription pubMedReader = CollectionReaderFactory.createReaderDescription(
