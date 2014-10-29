@@ -46,6 +46,7 @@
             <artifactId>uimafit-core</artifactId>
             <version>2.1.0</version>
         </dependency>
+
         <dependency>
             <groupId>rockt</groupId>
             <artifactId>seth</artifactId>
@@ -53,6 +54,8 @@
             <scope>system</scope>
             <systemPath>${basedir}/libs/seth.jar</systemPath>
         </dependency>
+
+
         <dependency>
             <groupId>org.apache.uima</groupId>
             <artifactId>Solrcas</artifactId>
@@ -68,6 +71,13 @@
             <artifactId>TikaAnnotator</artifactId>
             <version>2.3.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+
     </dependencies>
 
 <build>

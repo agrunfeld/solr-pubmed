@@ -1,6 +1,7 @@
 package annotator;
 
 
+import org.apache.commons.io.FileUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -12,6 +13,7 @@ import types.TmVarMutation;
 import java.io.*;
 import java.util.ArrayList;
 
+import static com.google.common.io.Files.createTempDir;
 import static org.apache.uima.fit.util.JCasUtil.select;
 
 /**
@@ -53,21 +55,15 @@ public class TmVarAnnotator extends JCasAnnotator_ImplBase {
     @ConfigurationParameter(name = PARAM_TMVAR_BASE_DIR)
     private String tmVarBaseDir;
 
-    public static final String PARAM_TMVAR_BASE_INPUT_DIR = "tmVarBaseInputDir";
-    @ConfigurationParameter(name = PARAM_TMVAR_BASE_INPUT_DIR)
-    private String tmVarBaseInputDir;
-
-    public static final String PARAM_TMVAR_BASE_OUTPUT_DIR = "tmVarBaseOutputDir";
-    @ConfigurationParameter(name = PARAM_TMVAR_BASE_OUTPUT_DIR)
-    private String tmVarBaseOutputDir;
-
-
     /**
      * @see org.apache.uima.fit.component.JCasAnnotator_ImplBase#process(org.apache.uima.jcas.JCas)
      */
 
     @Override
     public void process(JCas aJCas) throws AnalysisEngineProcessException {
+
+        File tmVarInBaseTempDir = createTempDir();
+        File tmVarOutBaseTempDir = createTempDir();
 
         String text = aJCas.getDocumentText();
 
@@ -84,22 +80,31 @@ public class TmVarAnnotator extends JCasAnnotator_ImplBase {
 
 
             try {
-                FileWriter writer = new FileWriter(tmVarBaseInputDir + File.separator + "TmVarForm" + ".PubTator.txt");
+                FileWriter writer = new FileWriter(tmVarInBaseTempDir + File.separator + "TmVarForm" + ".PubTator.txt");
                 writer.write(temp);
                 writer.close();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            tmVarWrapper(aJCas, part);
+            tmVarWrapper(aJCas, part, tmVarInBaseTempDir.toString(), tmVarOutBaseTempDir.toString());
         }
+
+        try {
+            FileUtils.deleteDirectory(tmVarInBaseTempDir);
+            FileUtils.deleteDirectory(tmVarOutBaseTempDir);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
-    public void tmVarWrapper(JCas aJCas, Section passage) {
-        String in = tmVarBaseInputDir;
-        String out = tmVarBaseOutputDir;
+    public void tmVarWrapper(JCas aJCas, Section passage,String tmVarBaseInputTempDir, String tmVarBaseOutputTempDir) {
+        //String in = tmVarBaseInputDir;
+        //String in = tmVarBaseInputTempDir;
+        //String out = tmVarBaseOutputTempDir;
 
-        String[] command = {"perl", "tmVar.pl", "-i", in, "-o", out, "-s", "setup.txt", "-f", "PubTator"};
+        String[] command = {"perl", "tmVar.pl", "-i", tmVarBaseInputTempDir, "-o", tmVarBaseOutputTempDir, "-s", "setup.txt", "-f", "PubTator"};
         ProcessBuilder p = new ProcessBuilder(command);
 
         p.directory(new File(tmVarBaseDir));
@@ -122,7 +127,7 @@ public class TmVarAnnotator extends JCasAnnotator_ImplBase {
 
         try {
 
-            String files_folder = tmVarBaseOutputDir + File.separator + "TmVarForm.PubTator.txt.PubTator";
+            String files_folder = tmVarBaseOutputTempDir + File.separator + "TmVarForm.PubTator.txt.PubTator";
             File fileName = new File(files_folder);
 
 

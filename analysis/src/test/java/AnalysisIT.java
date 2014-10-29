@@ -15,8 +15,6 @@ import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.solrcas.SolrCASConsumer;
-import org.apache.uima.tika.FileSystemCollectionReader;
-import org.apache.uima.tika.TIKAWrapper;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -69,9 +67,7 @@ public class AnalysisIT {
         AnalysisEngineDescription tmVar =
                 AnalysisEngineFactory.createEngineDescription(
                         TmVarAnnotator.class,
-                        TmVarAnnotator.PARAM_TMVAR_BASE_DIR, "/home/alex/tools/tmVar",
-                        TmVarAnnotator.PARAM_TMVAR_BASE_INPUT_DIR, "/home/alex/tools/tmVar/in",
-                        TmVarAnnotator.PARAM_TMVAR_BASE_OUTPUT_DIR, "/home/alex/tools/tmVar/out");
+                        TmVarAnnotator.PARAM_TMVAR_BASE_DIR, "/home/alex/tools/tmVar");
 
 
         AnalysisEngineDescription solrConsumer =

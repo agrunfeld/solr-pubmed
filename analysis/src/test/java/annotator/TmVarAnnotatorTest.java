@@ -6,13 +6,14 @@ import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.jcas.JCas;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import types.Section;
 import types.TmVarMutation;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
+import java.util.Properties;
 
 import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngine;
 import static org.apache.uima.fit.util.JCasUtil.select;
@@ -60,15 +61,20 @@ public class TmVarAnnotatorTest {
 
     }
 
-    @Ignore("need to package tmVar")
+    // @Ignore("need to package tmVar")
+
     @Test
     public void testProcess() throws Exception {
+
+        Properties analysisProperties = new Properties();
+        FileInputStream in = new FileInputStream("analysis/analysis.properties");
+        analysisProperties.load(in);
+        in.close();
+
         AnalysisEngine tmVar =
                 createEngine(
                         TmVarAnnotator.class,
-                        TmVarAnnotator.PARAM_TMVAR_BASE_DIR, "/home/alex/tools/tmVar",
-                        TmVarAnnotator.PARAM_TMVAR_BASE_INPUT_DIR, "/home/alex/tools/tmVar/in",
-                        TmVarAnnotator.PARAM_TMVAR_BASE_OUTPUT_DIR, "/home/alex/tools/tmVar/out");
+                        TmVarAnnotator.PARAM_TMVAR_BASE_DIR, analysisProperties.getProperty("tmVarDirectory"));
 
         tmVar.process(sampleJCas);
 
