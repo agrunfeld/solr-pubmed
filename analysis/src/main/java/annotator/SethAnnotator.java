@@ -11,7 +11,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Level;
 import seth.SETH;
-import types.SethMutation;
+import types.*;
 
 /**
  * This class demonstrates annotating member variables with the @ConfigurationParameter annotation.
@@ -96,24 +96,177 @@ public class SethAnnotator extends JCasAnnotator_ImplBase {
              System.out.println("Is PSM = "+ m.isPsm());
              **/
 
-            SethMutation annotation = new SethMutation(aJCas, m.getStart(), m.getEnd());
-            annotation.setReferenceSequence(m.getRef());
-            annotation.setMutatedResidue(m.getMutResidue());
-            annotation.setLocationWrtResidueOrNucleotide(m.getPosition());
-            annotation.setWildTypeResidue(m.getWtResidue());
-            annotation.setTool(m.getTool().name());
-            annotation.setNormalized(m.toNormalized());
-            annotation.setHGVS(m.toHGVS());
-            //annotation.setSequenceType(SNPSimpleClassifier(m.isAmbiguous(), m.isNsm(),m.isPsm()));
-            annotation.setIsSnpAmbiguous(m.isAmbiguous());
-            annotation.setIsNucleotideSequenceMutation(m.isNsm());
-            annotation.setIsProteinSequenceMutation(m.isPsm());
+            String seqType = SequenceIdentifier(m);
+
+            if (m.getType().toString().contains("DBSNP")){
+
+                DBSNP annotation = new DBSNP(aJCas, m.getStart(), m.getEnd());
+                annotation.setReferenceSequence(m.getRef());
+                annotation.setMutatedResidue(m.getMutResidue());
+                annotation.setLocation(m.getPosition());
+                annotation.setWildTypeResidue(m.getWtResidue());
+                annotation.setTool(m.getTool().name());
+                annotation.setNormalized(m.toNormalized());
+                annotation.setHGVS(m.toHGVS());
+                annotation.setElementaryChange(m.getType().name());
+                annotation.addToIndexes();
+                getContext().getLogger().log(Level.FINEST, "Found: " + annotation);
+
+            }
+            else if (seqType.equalsIgnoreCase("DNA")){
+
+                DNAMutation annotation = new DNAMutation(aJCas, m.getStart(), m.getEnd());
+                annotation.setReferenceSequence(m.getRef());
+                annotation.setMutatedResidue(m.getMutResidue());
+                annotation.setLocation(m.getPosition());
+                annotation.setWildTypeResidue(m.getWtResidue());
+                annotation.setTool(m.getTool().name());
+                annotation.setNormalized(m.toNormalized());
+                annotation.setHGVS(m.toHGVS());
+                annotation.setElementaryChange(m.getType().name());
+                 annotation.addToIndexes();
+                getContext().getLogger().log(Level.FINEST, "Found: " + annotation);
+
+            }
+            else if(seqType.equalsIgnoreCase("RNA")){
+                RNAMutation annotation = new RNAMutation(aJCas, m.getStart(), m.getEnd());
+                annotation.setReferenceSequence(m.getRef());
+                annotation.setMutatedResidue(m.getMutResidue());
+                annotation.setLocation(m.getPosition());
+                annotation.setWildTypeResidue(m.getWtResidue());
+                annotation.setTool(m.getTool().name());
+                annotation.setNormalized(m.toNormalized());
+                annotation.setHGVS(m.toHGVS());
+                annotation.setElementaryChange(m.getType().name());
+                annotation.addToIndexes();
+                getContext().getLogger().log(Level.FINEST, "Found: " + annotation);
+            }
+            else if(seqType.equalsIgnoreCase("Protein")){
+                ProteinMutation annotation = new ProteinMutation(aJCas, m.getStart(), m.getEnd());
+                annotation.setReferenceSequence(m.getRef());
+                annotation.setMutatedResidue(m.getMutResidue());
+                annotation.setLocation(m.getPosition());
+                annotation.setWildTypeResidue(m.getWtResidue());
+                annotation.setTool(m.getTool().name());
+                annotation.setNormalized(m.toNormalized());
+                annotation.setHGVS(m.toHGVS());
+                annotation.setElementaryChange(m.getType().name());
+                annotation.addToIndexes();
+                getContext().getLogger().log(Level.FINEST, "Found: " + annotation);
+            }
+            else if(seqType.equalsIgnoreCase("Genome")){
+                GenomeMutation annotation = new GenomeMutation(aJCas, m.getStart(), m.getEnd());
+                annotation.setReferenceSequence(m.getRef());
+                annotation.setMutatedResidue(m.getMutResidue());
+                annotation.setLocation(m.getPosition());
+                annotation.setWildTypeResidue(m.getWtResidue());
+                annotation.setTool(m.getTool().name());
+                annotation.setNormalized(m.toNormalized());
+                annotation.setHGVS(m.toHGVS());
+                annotation.setElementaryChange(m.getType().name());
+                annotation.addToIndexes();
+                getContext().getLogger().log(Level.FINEST, "Found: " + annotation);
+            }
+            else if(seqType.equalsIgnoreCase("Mitochondrial")){
+                MitochondrialMutation annotation = new MitochondrialMutation(aJCas, m.getStart(), m.getEnd());
+                annotation.setReferenceSequence(m.getRef());
+                annotation.setMutatedResidue(m.getMutResidue());
+                annotation.setLocation(m.getPosition());
+                annotation.setWildTypeResidue(m.getWtResidue());
+                annotation.setTool(m.getTool().name());
+                annotation.setNormalized(m.toNormalized());
+                annotation.setHGVS(m.toHGVS());
+                annotation.setElementaryChange(m.getType().name());
+                annotation.addToIndexes();
+                getContext().getLogger().log(Level.FINEST, "Found: " + annotation);
+            }
+            else {
 
 
-            annotation.addToIndexes();
-            getContext().getLogger().log(Level.FINEST, "Found: " + annotation);
+                AmbiguousMutation annotation = new AmbiguousMutation(aJCas, m.getStart(), m.getEnd());
+            }
+//            else {
+//                MitochondrialMutation annotation = new MitochondrialMutation(aJCas, m.getStart(), m.getEnd());
+//               // annotation.setReferenceSequence(m.getRef());
+////                annotation.setMutatedResidue(m.getMutResidue());
+////                annotation.setLocation(m.getPosition());
+////                annotation.setWildTypeResidue(m.getWtResidue());
+////                annotation.setTool(m.getTool().name());
+////                annotation.setNormalized(m.toNormalized());
+////                annotation.setHGVS(m.toHGVS());
+////                annotation.setElementaryChange(m.getType().name());
+////                annotation.addToIndexes();
+////                getContext().getLogger().log(Level.FINEST, "Found: " + annotation);
+//            }
 
         }
 
+    }
+
+    public static String HGVSSequenceTypeIdentifier(MutationMention mute){
+
+        if (mute.toHGVS().substring(0, 2).equalsIgnoreCase("c.")){
+            return "DNA";
+        }
+        else if(mute.toHGVS().substring(0,2).equalsIgnoreCase("r.")){
+            return "RNA";
+        }
+        else if(mute.toHGVS().substring(0,2).equalsIgnoreCase("p.")){
+            return "Protein";
+        }
+        else if(mute.toHGVS().substring(0,2).equalsIgnoreCase("g.")){
+            return "Genome";
+        }
+        else if(mute.toHGVS().substring(0,2).equalsIgnoreCase("m.")){
+            return "Mitochondrial";
+        }
+        else {
+            return "Unknown";
+        }
+
+
+
+    }
+
+    public static String SequenceIdentifier(MutationMention m){
+        String HGVS;
+        String referenceSeq = m.getRef();
+        Boolean Nsm = m.isNsm();
+        Boolean Psm = m.isPsm();
+        Boolean Amb = m.isAmbiguous();
+
+        if (m.toHGVS().substring(0, 2).equalsIgnoreCase("c.")){
+            HGVS = "DNA";
+        }
+        else if(m.toHGVS().substring(0,2).equalsIgnoreCase("r.")){
+            HGVS =  "RNA";
+        }
+        else if(m.toHGVS().substring(0,2).equalsIgnoreCase("p.")){
+            HGVS =  "Protein";
+        }
+        else if(m.toHGVS().substring(0,2).equalsIgnoreCase("g.")){
+            HGVS =  "Genome";
+        }
+        else if(m.toHGVS().substring(0,2).equalsIgnoreCase("m.")){
+            HGVS =  "Mitochondrial";
+        }
+        else {
+            HGVS =  "Unknown";
+        }
+
+
+        if(!(HGVS.equalsIgnoreCase("Unknown"))){
+            return HGVS;
+        }
+        else
+        {
+            if (Nsm == true && Psm == false && Amb == false) {
+                return "DNA";
+            } else if (Nsm == false && Psm == true && Amb == false) {
+                return "Protein";
+            } else {
+                return "Unknown";
+            }
+        }
     }
 }

@@ -81,6 +81,7 @@ public class TmVarAnnotatorTest {
         int count=0;
         for (TmVarMutation taggedMutation : select(sampleJCas, TmVarMutation.class)) {
             assertEquals(expected[count++],taggedMutation.getCoveredText());
+
         }
     }
 

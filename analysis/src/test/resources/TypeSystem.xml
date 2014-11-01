@@ -132,6 +132,123 @@
             </features>
         </typeDescription>
 
+
+        <typeDescription>
+            <name>types.MutationExtended</name>
+            <description/>
+            <supertypeName>types.Mutation</supertypeName>
+            <features>
+
+                <featureDescription>
+                    <name>referenceSequence</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+
+                <featureDescription>
+                    <name>wildTypeResidue</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+
+                <featureDescription>
+                    <name>mutatedResidue</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+
+                <featureDescription>
+                    <name>location</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+
+                <featureDescription>
+                    <name>normalized</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+
+                <featureDescription>
+                    <name>tool</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+
+                <featureDescription>
+                    <name>HGVS</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+
+                <featureDescription>
+                    <name>SequenceType</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+
+                <featureDescription>
+                    <name>elementaryChange</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+
+                <featureDescription>
+                    <name>AmbiguousOutput</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+                </featureDescription>
+            </features>
+        </typeDescription>
+
+        <typeDescription>
+            <name>types.DNAMutation</name>
+            <description/>
+            <supertypeName>types.MutationExtended</supertypeName>
+            <features>
+            </features>
+        </typeDescription>
+
+        <typeDescription>
+            <name>types.ProteinMutation</name>
+            <description/>
+            <supertypeName>types.MutationExtended</supertypeName>
+            <features>
+            </features>
+        </typeDescription>
+
+        <typeDescription>
+            <name>types.RNAMutation</name>
+            <description/>
+            <supertypeName>types.MutationExtended</supertypeName>
+            <features>
+            </features>
+        </typeDescription>
+
+        <typeDescription>
+            <name>types.SNP</name>
+            <description/>
+            <supertypeName>types.MutationExtended</supertypeName>
+            <features>
+            </features>
+        </typeDescription>
+
+        <typeDescription>
+            <name>types.DBSNP</name>
+            <description/>
+            <supertypeName>types.MutationExtended</supertypeName>
+            <features>
+            </features>
+        </typeDescription>
+
+        <typeDescription>
+            <name>types.AmbiguousMutation</name>
+            <description/>
+            <supertypeName>types.MutationExtended</supertypeName>
+            <features>
+            </features>
+        </typeDescription>
+
     </types>
 
 
