@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<xml-java-binding-schema>
+
+    <element name="MedlineCitationSet" type="class" root="true"/>
+    <!--<element name="Year" type="class" convert="int" />-->
+    <!--<element name="Month" type="class" convert="int" />-->
+    <!--<element name="Day" type="class" convert="int" />-->
+    <!--<interface name="Date" members="DateCreated DateCompleted DateRevised"/>-->
+    <options package="parsers.pubmed" />
+</xml-java-binding-schema>

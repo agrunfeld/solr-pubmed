@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>ca.bcgsc</groupId>
+        <artifactId>uima-components</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <pearMainDescriptor>desc/${project.artifactId}.xml</pearMainDescriptor>
+    </properties>
+
+    <artifactId>annotators</artifactId>
+    <name>UIMA: Analysis Engines</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>rockt</groupId>
+            <artifactId>seth</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.bcgsc</groupId>
+            <artifactId>uima-type-system</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>16.0.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4.2</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.uima</groupId>
+                <artifactId>PearPackagingMavenPlugin</artifactId>
+                <version>2.6.0</version>
+
+                <!-- if version is omitted, then -->
+                <!-- version is inherited from parent's pluginManagement section -->
+                <!-- otherwise, include a version element here -->
+
+                <!-- says to load Maven extensions
+                     (such as packaging and type handlers) from this plugin -->
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <!-- where you specify details of the thing being packaged -->
+                        <configuration>
+                            <mainComponentDesc>
+                                <!-- PEAR file main component descriptor -->
+                                ${pearMainDescriptor}
+                            </mainComponentDesc>
+                            <componentId>
+                                <!-- PEAR file component ID -->
+                                ${project.artifactId}
+                            </componentId>
+                        </configuration>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-artifacts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${project.build.directory}/${project.artifactId}.pear</file>
+                                    <type>pear</type>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

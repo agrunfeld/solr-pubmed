@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <luceneMatchVersion>4.10.0</luceneMatchVersion>
+
+    <lib dir="../lib/" regex=".*\.jar" />
+    <lib dir="../dist/" regex="solr-clustering-\d.*\.jar" />
+
+    <updateRequestProcessorChain name="uuid">
+        <processor class="solr.UUIDUpdateProcessorFactory">
+            <str name="fieldName">id</str>
+        </processor>
+        <processor class="solr.RunUpdateProcessorFactory"/>
+    </updateRequestProcessorChain>
+
+    <requestDispatcher handleSelect="true" >
+        <!-- Make sure your system has some authentication! before using enableRemoteStreaming="true" -->
+        <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048000" />
+
+        <httpCaching lastModifiedFrom="openTime" etagSeed="Solr" />
+        <httpCaching never304="true"/>
+    </requestDispatcher>
+
+
+    <requestHandler name="/update" class="solr.UpdateRequestHandler">
+        <lst name="defaults">
+            <str name="update.chain">uuid</str>
+        </lst>
+    </requestHandler>
+
+    <!-- XSLT Update Request Handler
+     Transforms incoming XML with stylesheet identified by tr=
+     -->
+    <requestHandler name="/update/xslt"
+                    startup="lazy"
+                    class="solr.XsltUpdateRequestHandler"/>
+
+    <requestHandler name="select" class="solr.SearchHandler" defaul="true">
+        <!-- default values for query parameters can be specified, these
+             will be overridden by parameters in the request
+          -->
+        <lst name="defaults">
+            <str name="echoParams">explicit</str>
+            <!--number of results-->
+            <int name="rows">10</int>
+
+            <!--highlighting defaults-->
+            <str name="hl">on</str>
+            <str name="hl.fl">title abstract_text</str>
+
+            <!--faceting defaults-->
+            <str name="facet">on</str>
+            <str name="facet.missing">false</str>
+            <str name="facet.field">mesh_heading_list</str>
+            <str name="facet.field">gene_symbol_list</str>
+            <str name="facet.field">journal_title</str>
+            <str name="facet.mincount">1</str>
+            <str name="facet.limit">10</str>
+
+            <!--similar documents defaults-->
+            <!--The fields to use for similarity-->
+           <str name="mlt.fl">article_title, abstract_text</str>
+            <!--Minimum Term Frequency - the frequency below which terms will be ignored in the source doc.-->
+           <str name="mlt.mintf">2</str>
+            <!--Minimum Document Frequency - the frequency at which words will be ignored which do not occur in at least this many docs.-->
+           <str name="mlt.mintf">5</str>
+            <!--minimum word length below which words will be ignored.-->
+           <str name="mlt.mintf">0</str>
+            <!--maximum word length above which words will be ignored.-->
+           <str name="mlt.mintf">0</str>
+            <!--maximum number of query terms that will be included in any generated query.-->
+           <str name="mlt.mintf">25</str>
+            <!--maximum number of query terms that will be included in any generated query.-->
+           <str name="mlt.mintf">25</str>
+
+
+
+            <!--default search field-->
+            <str name="df">abstract_text</str>
+        </lst>
+    </requestHandler>
+
+    <requestHandler name="clustering" class="solr.SearchHandler">
+          <lst name="defaults">
+            <bool name="clustering">true</bool>
+            <bool name="clustering.results">true</bool>
+         
+            <!-- Logical field to physical field mapping. -->
+            <str name="carrot.title">article_title</str>
+            <str name="carrot.snippet">abstract_text</str>
+         
+            <!-- Configure any other request handler parameters. We will cluster the
+         top 100 search results so bump up the 'rows' parameter. -->
+            <str name="rows">100</str>
+            <str name="fl">*,score</str>
+
+            <!--default search field-->
+            <str name="df">abstract_text</str>
+          </lst>
+         
+          <!-- Append clustering at the end of the list of search components. -->
+          <arr name="last-components">
+            <str>clustering</str>
+          </arr>
+    </requestHandler>
+
+    <searchComponent class="solr.HighlightComponent" name="highlight">
+        <highlighting>
+            <!-- Configure the standard formatter -->
+            <formatter name="html"
+                       default="true"
+                       class="solr.highlight.HtmlFormatter">
+                <lst name="defaults">
+                    <str name="hl.simple.pre"><![CDATA[<mark>]]></str>
+                    <str name="hl.simple.post"><![CDATA[</mark>]]></str>
+                </lst>
+            </formatter>
+
+            <!-- Configure the standard encoder -->
+            <encoder name="html"
+                     class="solr.highlight.HtmlEncoder"/>
+        </highlighting>
+    </searchComponent>
+
+    <searchComponent name="clustering" class="solr.clustering.ClusteringComponent">
+          <!-- Lingo clustering algorithm -->
+          <lst name="engine">
+            <str name="name">lingo</str>
+            <str name="carrot.algorithm">org.carrot2.clustering.lingo.LingoClusteringAlgorithm</str>
+          </lst>
+        <!-- -->
+        <!--  &lt;!&ndash; An example definition for the STC clustering algorithm. &ndash;&gt;-->
+        <!--  <lst name="engine">-->
+        <!--    <str name="name">stc</str>-->
+        <!--    <str name="carrot.algorithm">org.carrot2.clustering.stc.STCClusteringAlgorithm</str>-->
+        <!--  </lst>-->
+    </searchComponent>
+
+</config>

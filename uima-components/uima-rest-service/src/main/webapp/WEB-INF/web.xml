@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+    <display-name>Uima-Servlet</display-name>
+    <!-- Declare simple server test servlet -->
+    <servlet>
+        <servlet-name>Uima-Servlet</servlet-name>
+        <servlet-class>
+            org.apache.uima.simpleserver.servlet.SimpleServerServlet
+        </servlet-class>
+        <!-- Define the path to the tokenizer pear file -->
+        <init-param>
+            <param-name>PearPath</param-name>
+            <param-value>
+                WEB-INF/lib/annotators-1.0-SNAPSHOT.pear
+            </param-value>
+        </init-param>
+    </servlet>
+    <!-- Declare the URL of the servlet -->
+    <servlet-mapping>
+        <servlet-name>Uima-Servlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>

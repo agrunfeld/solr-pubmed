@@ -1,0 +1,3 @@
+[submodule "uima-components/SETH"]
+	path = uima-components/SETH
+	url = https://github.com/rockt/SETH.git
