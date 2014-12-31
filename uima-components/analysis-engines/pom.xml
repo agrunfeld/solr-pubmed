@@ -14,7 +14,7 @@
         <pearMainDescriptor>desc/${project.artifactId}.xml</pearMainDescriptor>
     </properties>
 
-    <artifactId>annotators</artifactId>
+    <artifactId>analysis-engines</artifactId>
     <name>UIMA: Analysis Engines</name>
 
     <dependencies>

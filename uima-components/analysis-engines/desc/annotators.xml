@@ -2,7 +2,7 @@
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
     <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
     <primitive>true</primitive>
-    <annotatorImplementationName>ca.bcgsc.uima.annotators.SethAnnotator</annotatorImplementationName>
+    <annotatorImplementationName>ca.bcgsc.uima.annotators.seth.SethAnnotatorOld</annotatorImplementationName>
     <analysisEngineMetaData>
         <name>SethAnnotator</name>
         <description/>

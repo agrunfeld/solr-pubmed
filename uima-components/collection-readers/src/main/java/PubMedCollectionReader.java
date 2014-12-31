@@ -1,4 +1,3 @@
-import parsers.PubMedParser;
 import org.apache.commons.io.FileUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
@@ -8,9 +7,9 @@ import org.apache.uima.fit.factory.JCasBuilder;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
+import parsers.PubMedParser;
 import parsers.pubmed.PubmedArticle;
 import parsers.pubmed.PubmedArticleSet;
-import types.Section;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
@@ -51,11 +50,11 @@ public class PubMedCollectionReader extends JCasCollectionReader_ImplBase {
 
         if (article.getMedlineCitation().getArticle().getAbstract() != null) {
             String abstractText = article.getMedlineCitation().getArticle().getAbstract().getAbstractText();
-            builder.add(abstractText, Section.class);
+            builder.add(abstractText);
         }
 
         String articleTitle = article.getMedlineCitation().getArticle().getArticleTitle();
-        builder.add(articleTitle, Section.class);
+        builder.add(articleTitle);
         builder.close();
     }
 
