@@ -1,0 +1,17 @@
+<h4 class="facets-heading">{{ facet_key | get_facet_name }}</h4>
+<ul class="unstyled facets-list">
+    {% for i in facets.facet_fields[facet_key] %}
+        {% if loop.index0 % 2 == 0 %}
+            {% set facet_val = facets.facet_fields[facet_key][loop.index0] %}
+            {% set facet_count = facets.facet_fields[facet_key][loop.index0 + 1] %}
+            <li>
+            <div class="row">
+                <a href="{{ url_for('index', q=query) }}&fq={{ get_fq(facet_key, facet_val) }}">
+                    <div class="four fifths overflow">{{ facet_val }}</div>
+                    <div class="one fifth align-right">{{ facet_count }}</div>
+                </a>
+            </div>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

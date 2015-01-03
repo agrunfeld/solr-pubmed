@@ -1,0 +1,42 @@
+{% macro page_link(page) -%}
+    {{ url_for('index', page=page, q=query) }}
+{%- endmacro %}
+
+{# todo: write test and fix last page bug#}
+{% with %}
+    {% set max_buttons = 10 %}
+    {% set pages = ceil(results.hits / results_per_page) | int %}
+
+    <ul class="button-group">
+        {# previous page button #}
+        {% if page == 0 %}
+            <li><a class="disabled" aria-disabled="true" role="button" href="#">&laquo;</a></li>
+        {% else %}
+            <li><a role="button" href="{{ page_link(page - 1) }}">&laquo;</a></li>
+        {% endif %}
+
+        {# buttons #}
+        {% for i in range(max_buttons - 1) %}
+            <li>
+                <a {% if i == page %} aria-selected="true" {% endif %} role="button"
+                                      href="{{ page_link(loop.index0) }}">{{ loop.index }}</a>
+            </li>
+        {% endfor %}
+
+        {# over flow button #}
+        {% if pages > max_buttons %}
+            <li><a role="button" class="disabled" aria-disabled="true" href="#">...</a></li>
+        {% endif %}
+
+        {# last page button #}
+        {% if page == pages - 1 %}
+            <li><a role="button" aria-selected="true" href="{{ page_link(pages-1) }}">{{ pages }}</a></li>
+            <li><a role="button" aria-disabled="true" class="disabled" href="#">&raquo;</a></li>
+        {% else %}
+            <li><a role="button" href="{{ page_link(pages - 1) }}">{{ pages }}</a></li>
+            <li><a role="button" href="{{ page_link(page + 1) }}">&raquo;</a></li>
+        {% endif %}
+    </ul>
+
+{% endwith %}
+

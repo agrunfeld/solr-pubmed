@@ -1,0 +1,41 @@
+<h4>Search returned {{ results.hits }} hit{{ results.hits|pluralize }}</h4>
+<div>
+    {% for result in results.docs %}
+        <div class="gap-bottom animated fadeInRight">
+            <h4 class="results-heading" data-truncate="1">
+                {{ result.article_title }}
+            </h4>
+
+            <div class="author-list">
+                {% set author_count = result.author_list | count %}
+                {% set max_authors = 5 %}
+                {% set loop_range = min(max_authors, author_count) %}
+                {%- for index in range(loop_range) -%}
+                    <a href="#">{{result.author_list[index]}}</a>{%- if index < loop_range - 1 or author_count > max_authors %}, {% endif -%}
+                {% endfor %}
+            {% if author_count > max_authors %}
+                <a class="author-link" href="#">...</a>
+            {% endif %}
+
+            </div>
+            {% for snippet in results.highlighting[result.id].abstract_text %}
+                <p class="results-text">
+                    {{ snippet|safe }}
+                </p>
+            {% endfor %}
+{#            {% for abstract_text in result.abstract_text %}#}
+{#                <p class="results-text" data-truncate="2">#}
+{#                    {{ abstract_text }}#}
+{#                </p>#}
+{#            {% endfor %}#}
+
+            <a class="pad-right" href="#">Related documents</a>
+            <a class="pad-right" target="_blank" href="http://www.ncbi.nlm.nih.gov/parsers.pubmed/{{ result.pmid }}">PubMed</a>
+{#            <span class="pad-right" target="_blank">PubMed</span>#}
+        </div>
+    {% endfor %}
+
+    {% if results.hits > results_per_page %}
+        {% include 'pagination.html' %}
+    {% endif %}
+</div>

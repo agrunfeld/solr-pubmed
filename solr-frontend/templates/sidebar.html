@@ -1,0 +1,11 @@
+{% if facets.facet_fields %}
+    {% for facet_key in facets.facet_fields %}
+        {% if facets.facet_fields[facet_key] %}
+            {% include 'facet_field.html' %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if clusters %}
+    {% include 'cluster_field.html' %}
+{% endif %}

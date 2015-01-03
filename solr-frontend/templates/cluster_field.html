@@ -1,0 +1,13 @@
+<h4 class="facets-heading">Clusters</h4>
+<ul class="unstyled facets-list">
+    {% for cluster in clusters %}
+        <li>
+            <div class="row">
+                <a href="#">
+                    <div class="four fifths" data-truncate="1">{{ cluster['labels'][0]}}</div>
+                    <div class="one fifth align-right">{{ cluster['docs'] | count }}</div>
+                </a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

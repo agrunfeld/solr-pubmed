@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% block title %}Test{% endblock %}
+
+{% block styles %}
+    <!-- Modernizr -->
+    <script src="{{ url_for('.static', filename='js/libs/modernizr-2.6.2.min.js') }}"></script>
+    <!-- framework css -->
+    <!--[if gt IE 9]><!-->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('.static', filename='css/groundwork.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('.static', filename='css/custom.css') }}">
+    <!--<![endif]-->
+    <!--[if lte IE 9]>
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-core.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-type.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-ui.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-anim.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('.static', filename='css/groundwork-ie.css')}}">
+    <![endif]-->
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="row padded">
+        <div class="one fourth padded">
+            {% if facets %}
+                {% include 'sidebar.html' %}
+            {% endif %}
+
+        </div>
+        <div class="three fourths padded">
+            {% if results %}
+                {% include 'results.html' %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{{ url_for('.static', filename='js/libs/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/groundwork.all.js') }}"></script>
+{% endblock %}
+
