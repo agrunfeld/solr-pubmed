@@ -75,7 +75,7 @@
                 <systemProperties>
                     <systemProperty>
                         <key>solr.solr.home</key>
-                        <value>${project.basedir}/../solr</value>
+                        <value>${project.basedir}</value>
                     </systemProperty>
                 </systemProperties>
             </configuration>
