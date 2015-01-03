@@ -15,7 +15,7 @@
         <init-param>
             <param-name>PearPath</param-name>
             <param-value>
-                WEB-INF/lib/annotators-1.0-SNAPSHOT.pear
+                WEB-INF/lib/annotator.pear
             </param-value>
         </init-param>
     </servlet>
