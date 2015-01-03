@@ -2,7 +2,7 @@
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
     <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
     <primitive>true</primitive>
-    <annotatorImplementationName>ca.bcgsc.uima.annotators.seth.SethAnnotatorOld</annotatorImplementationName>
+    <annotatorImplementationName>ca.bcgsc.uima.annotators.seth.SethAnnotator</annotatorImplementationName>
     <analysisEngineMetaData>
         <name>SethAnnotator</name>
         <description/>
@@ -51,142 +51,120 @@
                 </value>
             </nameValuePair>
         </configurationParameterSettings>
-        
-        
-    <typeSystemDescription>
-    	<types>
-    	<typeDescription>
-            <name>types.Mutation</name>
-            <description/>
-            <supertypeName>uima.tcas.Annotation</supertypeName>
-            <features>
-
-                <featureDescription>
-                    <name>text</name>
+        <typeSystemDescription>
+            <types>
+                <typeDescription>
+                    <name>types.Mutation</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-
-	          <featureDescription>
-                    <name>referenceSequence</name>
+                    <supertypeName>uima.tcas.Annotation</supertypeName>
+                    <features>
+                        <featureDescription>
+                            <name>text</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>referenceSequence</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>wildTypeResidue</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>mutatedResidue</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>location</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>normalized</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>tool</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>HGVS</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>SequenceType</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>elementaryChange</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>AmbiguousOutput</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+                        </featureDescription>
+                    </features>
+                </typeDescription>
+                <typeDescription>
+                    <name>types.DNAMutation</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-
-                <featureDescription>
-                    <name>wildTypeResidue</name>
+                    <supertypeName>types.Mutation</supertypeName>
+                </typeDescription>
+                <typeDescription>
+                    <name>types.ProteinMutation</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-
-                <featureDescription>
-                    <name>mutatedResidue</name>
+                    <supertypeName>types.Mutation</supertypeName>
+                </typeDescription>
+                <typeDescription>
+                    <name>types.RNAMutation</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-
-                <featureDescription>
-                    <name>location</name>
+                    <supertypeName>types.Mutation</supertypeName>
+                </typeDescription>
+                <typeDescription>
+                    <name>types.GenomeMutation</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-
-                <featureDescription>
-                    <name>normalized</name>
+                    <supertypeName>types.Mutation</supertypeName>
+                </typeDescription>
+                <typeDescription>
+                    <name>types.MitochondrialMutation</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-
-                <featureDescription>
-                    <name>tool</name>
+                    <supertypeName>types.Mutation</supertypeName>
+                </typeDescription>
+                <typeDescription>
+                    <name>types.AmbiguousMutation</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-
-                <featureDescription>
-                    <name>HGVS</name>
+                    <supertypeName>types.Mutation</supertypeName>
+                </typeDescription>
+                <typeDescription>
+                    <name>types.SNPMutation</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
-
-                <featureDescription>
-                    <name>SequenceType</name>
+                    <supertypeName>types.Mutation</supertypeName>
+                </typeDescription>
+                <typeDescription>
+                    <name>types.DBSNP</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
+                    <supertypeName>types.Mutation</supertypeName>
+                </typeDescription>
 
-                <featureDescription>
-                    <name>elementaryChange</name>
-                    <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
-                </featureDescription>
+            </types>
 
-                <featureDescription>
-                    <name>AmbiguousOutput</name>
-                    <description/>
-                    <rangeTypeName>uima.cas.Boolean</rangeTypeName>
-                </featureDescription>
-            </features>
-        </typeDescription>
-
-        <typeDescription>
-            <name>types.DNAMutation</name>
-            <description/>
-            <supertypeName>types.Mutation</supertypeName>
-            </typeDescription>
-
-        <typeDescription>
-            <name>types.ProteinMutation</name>
-            <description/>
-            <supertypeName>types.Mutation</supertypeName>
-            </typeDescription>
-
-        <typeDescription>
-            <name>types.RNAMutation</name>
-            <description/>
-            <supertypeName>types.Mutation</supertypeName>
-            </typeDescription>
-
-        <typeDescription>
-            <name>types.GenomeMutation</name>
-            <description/>
-            <supertypeName>types.Mutation</supertypeName>
-            </typeDescription>
-
-        <typeDescription>
-            <name>types.MitochondrialMutation</name>
-            <description/>
-            <supertypeName>types.Mutation</supertypeName>
-            </typeDescription>
-
-        <typeDescription>
-            <name>types.AmbiguousMutation</name>
-            <description/>
-            <supertypeName>types.Mutation</supertypeName>
-            </typeDescription>
-
-        <typeDescription>
-            <name>types.SNPMutation</name>
-            <description/>
-            <supertypeName>types.Mutation</supertypeName>
-            </typeDescription>
-
-        <typeDescription>
-            <name>types.DBSNP</name>
-            <description/>
-            <supertypeName>types.Mutation</supertypeName>
-            </typeDescription>
-                   
-       </types>
-        
-    </typeSystemDescription>
-    
+        </typeSystemDescription>
         <typePriorities/>
         <fsIndexCollection/>
         <capabilities>
-            <capability>              
-            			<inputs/>
-        <outputs>
+            <capability>
+                <inputs/>
+                <outputs>
                     <type>types.AmbiguousMutation</type>
                     <feature>AmbiguousMutation:referenceSequence</feature>
                     <feature>AmbiguousMutation:wildTypeResidue</feature>
@@ -285,28 +263,4 @@
             <outputsNewCASes>false</outputsNewCASes>
         </operationalProperties>
     </analysisEngineMetaData>
-<externalResourceDependencies>
-    <externalResourceDependency>
-      <key>mute</key>
-      <description/>
-      <optional>false</optional>
-    </externalResourceDependency>
-  </externalResourceDependencies>
-  <resourceManagerConfiguration>
-    <externalResources>
-      <externalResource>
-        <name>mutation</name>
-        <description>ew</description>
-        <fileResourceSpecifier>
-          <fileUrl>resources/mutations.txt</fileUrl>
-        </fileResourceSpecifier>
-      </externalResource>
-    </externalResources>
-  <externalResourceBindings>
-      <externalResourceBinding>
-        <key>mute</key>
-        <resourceName>mutation</resourceName>
-      </externalResourceBinding>
-    </externalResourceBindings>
-  </resourceManagerConfiguration>
 </analysisEngineDescription>
