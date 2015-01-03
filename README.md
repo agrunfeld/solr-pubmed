@@ -2,15 +2,26 @@
 =========
 
 An [Apache Solr](http://lucene.apache.org/solr/) based tool for fetching, indexing and searching PubMed/MEDLINE records. 
+
 Requirements
 ---------
+* [Apache Maven](http://maven.apache.org/download.cgi)
+* [Oracle JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
+* Python 2.7
+* [pip](https://pip.pypa.io/en/latest/index.html)
 
-[Apache Maven](http://maven.apache.org/download.cgi)
+[Anaconda](https://store.continuum.io/cshop/anaconda/) is an easy to install Python distribution that doesn’t require root or local admin privileges.
+
+[virtualenv](https://virtualenv.pypa.io/en/latest/) is recommended for create isolated Python development environments. 
+
+Get the code
+------------
+    git clone --recursive https://github.com/apurdy/solr-pubmed.git
 
 Building
 ---------
-
-    mvn compile
+    cd solr-pubmed
+    mvn install
 
 Running Tests
 -------------
@@ -18,14 +29,11 @@ To execute all unit tests, use:
 
     mvn test
 
-To execute integration tests, use:
-
-    mvn verify
-
 Starting the Solr Server
 -------------
 To run the configured Solr instance on a local Jetty server, use:
 
+    cd solr-pubmed/solr-config
     mvn jetty:run-war
 
 The Solr instance will run on [http://localhost:8983/core0/](http://localhost:8983/core0/) by default.
