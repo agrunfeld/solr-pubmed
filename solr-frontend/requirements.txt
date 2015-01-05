@@ -3,5 +3,5 @@ Jinja2==2.7.3
 MarkupSafe==0.23
 Werkzeug==0.9.6
 itsdangerous==0.24
-pysolr==3.2.0
 requests==2.4.1
+-e git://github.com/apurdy/pysolr.git#egg=pysolr
