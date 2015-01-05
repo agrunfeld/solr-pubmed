@@ -50,15 +50,16 @@ Fetching PubMed and PMC records
 -------------
 The retrieval directory contains python scripts for downloading PubMed records using the Entrez E-Utils and PMC Open Access Web services. 
 
-We recommend using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) to manage your python development environments. 
+[virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) is recommended for managing your python development environments. 
 
-To ensure you have the neccesary python dependencies needed to run the scripts, run the following command in the root directory of the retrieval module:
+To ensure you have the neccesary python packages needed to run the scripts, run the following:
 
+    cd solr-pubmed/entrez-scripts
     pip install -r requirements.txt
     
 Indexing the sample records
 -------------
-A collection of utility methods for indexing MEDLINE records can be found in the `ingestion.SolrUtils` class under the `entrez-parsers` module.
+A collection of utility methods for indexing MEDLINE records can be found in the `ingestion.SolrUtils` class in the `entrez-parsers` module.
 
 Running the Solr frontend
 -------------
