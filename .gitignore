@@ -81,6 +81,7 @@ solr/core0/data/
 [Ii]nclude
 [Ll]ib
 [Ss]cripts
+[Ll]ocal
 pyvenv.cfg
 
 
