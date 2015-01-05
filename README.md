@@ -52,9 +52,14 @@ The retrieval directory contains python scripts for downloading PubMed records u
 
 [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) is recommended for managing your python development environments. 
 
-To ensure you have the neccesary python packages needed to run the scripts, run the following:
+If you haven't set up a virtualenv environment already you can run:
 
     cd solr-pubmed/entrez-scripts
+    virtualenv .
+    source bin/activate
+
+To ensure you have the neccesary python packages needed to run the scripts, run the following:
+
     pip install -r requirements.txt
     
 Indexing the sample records
@@ -63,9 +68,16 @@ A collection of utility methods for indexing MEDLINE records can be found in the
 
 Running the Solr frontend
 -------------
-The `solr-frontend` module consists of a lightweight [Flask](http://flask.pocoo.org/) application, which is essentially a thin presentation layer built on the Solr REST interface. The UI provides several features including keyword search, faceted searching, dynamic faceting using document clustering and highlighting. Before running the flask application make sure the required python packages are installed using pip:
+The `solr-frontend` module consists of a lightweight [Flask](http://flask.pocoo.org/) application, which is essentially a thin presentation layer built on the Solr REST interface. The UI provides several features including keyword search, faceted searching, dynamic faceting using document clustering and highlighting. 
 
-    cd solr-frontend
+If you haven't set up a virtualenv environment already you can run:
+
+    cd solr-pubmed/solr-frontend
+    virtualenv .
+    source bin/activate
+    
+Then install the python packages:
+
     pip install -r requirements.txt
     
 If you're on Windows using the Anaconda python distribution, you may run into issues installing the MarkupSafe package. If so, you can solve this issue by modifying `cygwinccompiler.py` as desribed here: [http://bugs.python.org/issue21821](http://bugs.python.org/issue21821)
