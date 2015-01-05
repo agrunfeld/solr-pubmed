@@ -19,6 +19,11 @@ Get the code
 This repo contains submodules, so use the following command to clone the repository and it's dependencies:
 
     git clone --recursive https://github.com/apurdy/solr-pubmed.git
+    
+If you've already cloned the repository and you need to initialize the submodules you can run:
+
+    git submodule init
+    git submodule update
 
 Building
 ---------
