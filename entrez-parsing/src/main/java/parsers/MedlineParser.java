@@ -17,7 +17,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-//todo: alternative approach, use an XSLT to transform parsers.medline records to XML Formatted Index Updates
+//todo: alternative approach, use an XSLT to transform medline records to XML Formatted Index Updates
 public class MedlineParser {
 
     private final Unmarshaller unmarshaller;

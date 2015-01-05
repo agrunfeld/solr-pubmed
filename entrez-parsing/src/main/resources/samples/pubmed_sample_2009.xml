@@ -858,7 +858,7 @@
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
-            <PubMedPubDate PubStatus="parsers.medline">
+            <PubMedPubDate PubStatus="medline">
                 <Year>2010</Year>
                 <Month>12</Month>
                 <Day>14</Day>
@@ -1014,7 +1014,7 @@
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
-            <PubMedPubDate PubStatus="parsers.medline">
+            <PubMedPubDate PubStatus="medline">
                 <Year>2010</Year>
                 <Month>12</Month>
                 <Day>14</Day>
@@ -1149,7 +1149,7 @@
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
-            <PubMedPubDate PubStatus="parsers.medline">
+            <PubMedPubDate PubStatus="medline">
                 <Year>2010</Year>
                 <Month>12</Month>
                 <Day>14</Day>
@@ -1306,7 +1306,7 @@
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
-            <PubMedPubDate PubStatus="parsers.medline">
+            <PubMedPubDate PubStatus="medline">
                 <Year>2010</Year>
                 <Month>12</Month>
                 <Day>14</Day>

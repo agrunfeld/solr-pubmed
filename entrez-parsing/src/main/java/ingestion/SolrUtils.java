@@ -27,9 +27,10 @@ import java.util.zip.GZIPInputStream;
  * Created by alex on 29/09/14.
  */
 public class SolrUtils {
+    // TODO: automate this, and make it portable
     public static final String SAMPLE_FILE = "samples/medsamp2014.xml";
-    public static final String MEDLINE_2014 = "/home/alex/parsers.medline/2014";
-    public static final String MEDLINE = "/home/alex/parsers.medline";
+    public static final String MEDLINE_2014 = "/home/alex/medline/2014";
+    public static final String MEDLINE = "/home/alex/medline";
 
     public static void deleteRecords() throws Exception {
         BasicConfigurator.configure();

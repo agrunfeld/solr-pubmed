@@ -21,14 +21,14 @@ console.setFormatter(formatter)
 # add the handler to the root logger
 logging.getLogger('').addHandler(console)
 
-BASE_PATH = "/home/alex/parsers.medline"
+BASE_PATH = "/home/alex/medline"
 BATCH_SIZE = 10000
 
 Entrez.email = "apurdy@uvic.ca"
 
 for year in range(1952, 1800, -1):
 
-    search_results = Entrez.read(Entrez.esearch(db="parsers.pubmed",
+    search_results = Entrez.read(Entrez.esearch(db="pubmed",
                                                 term="{0:d}[edat]".format(year),
                                                 usehistory="y"))
     count = int(search_results["Count"])
@@ -52,7 +52,7 @@ for year in range(1952, 1800, -1):
         with gzip.open(fname, "wt") as out_handle:
             logging.debug("Downloading record {0:d} to {1:d}".format(start + 1, end))
             try:
-                fetch_handle = Entrez.efetch(db="parsers.pubmed",
+                fetch_handle = Entrez.efetch(db="pubmed",
                                              retmode="xml",
                                              retstart=start, retmax=BATCH_SIZE,
                                              webenv=search_results["WebEnv"],

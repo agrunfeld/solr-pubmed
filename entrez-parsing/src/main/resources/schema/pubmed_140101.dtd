@@ -31,12 +31,12 @@
                                    HU|HY|IN|IS|IT|IW|JA|KA|KO|LT|MK|ML|NL|NO|
                                    PL|PT|PS|RO|RU|SL|SK|SQ|SR|SV|SW|TH|TR|UK|
                                    VI|ZH)">
-<!ENTITY % pub.status.int "pmc | pmcr | parsers.pubmed | pubmedr |
-                             premedline | parsers.medline | medliner | entrez | pmc-release">
+<!ENTITY % pub.status.int "pmc | pmcr | pubmed | pubmedr |
+                             premedline | medline | medliner | entrez | pmc-release">
 <!ENTITY % pub.status "(received | accepted | epublish | 
                               ppublish | revised | aheadofprint | 
                               retracted | ecollection | %pub.status.int;)">
-<!ENTITY % art.id.type.int "parsers.pubmed | parsers.medline | pmcid | pmcbook | bookaccession">
+<!ENTITY % art.id.type.int "pubmed | medline | pmcid | pmcbook | bookaccession">
 							
 <!ENTITY % art.id.type "(doi | pii | pmcpid | pmpid | pmc | mid |
                               sici | %art.id.type.int;)">
@@ -56,7 +56,7 @@
 <!ELEMENT ArticleIdList (ArticleId+)>
 <!ELEMENT ArticleId (#PCDATA)>
 <!ATTLIST ArticleId
-	IdType %art.id.type; "parsers.pubmed"
+	IdType %art.id.type; "pubmed"
 >
 <!ELEMENT History (PubMedPubDate+)>
 <!ELEMENT URL (#PCDATA)>
