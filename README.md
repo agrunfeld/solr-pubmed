@@ -12,14 +12,17 @@ Requirements
 
 [Anaconda](https://store.continuum.io/cshop/anaconda/) is an easy to install Python distribution that doesn’t require root or local admin privileges.
 
-[virtualenv](https://virtualenv.pypa.io/en/latest/) is recommended for create isolated Python development environments. 
+[virtualenv](https://virtualenv.pypa.io/en/latest/) is recommended for create isolated Python development environments.
 
 Get the code
 ------------
+This repo contains submodules, so use the following command to clone the repository and it's dependencies:
+
     git clone --recursive https://github.com/apurdy/solr-pubmed.git
 
 Building
 ---------
+
     cd solr-pubmed
     mvn install
 
@@ -38,12 +41,6 @@ To run the configured Solr instance on a local Jetty server, use:
 
 The Solr instance will run on [http://localhost:8983/core0/](http://localhost:8983/core0/) by default.
 
-Indexing the sample records
--------------
-To index a small collection MEDLINE records run the following script in the ingestion module:
-
-    TestScripts#ImportSampleData()
-
 Fetching PubMed and PMC records
 -------------
 The retrieval directory contains python scripts for downloading PubMed records using the Entrez E-Utils and PMC Open Access Web services. 
@@ -53,11 +50,16 @@ We recommend using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtu
 To ensure you have the neccesary python dependencies needed to run the scripts, run the following command in the root directory of the retrieval module:
 
     pip install -r requirements.txt
-
-Running the Flask application
+    
+Indexing the sample records
 -------------
-The webapp directory contains a [Flask](http://flask.pocoo.org/)-based search UI, which provides several features including faceted searching and highlighting. Again make sure the required python packages are installed using pip:
+A collection of utility methods for indexing MEDLINE records can be found in the `ingestion.SolrUtils` class under the `entrez-parsers` module.
 
+Running the Solr frontend
+-------------
+The `solr-frontend` module consists of a lightweight [Flask](http://flask.pocoo.org/) application, which is essentially a thin presentation layer built on the Solr REST interface. The UI provides several features including keyword search, faceted searching, dynamic faceting using document clustering and highlighting. Before running the flask application make sure the required python packages are installed using pip:
+
+    cd solr-frontend
     pip install -r requirements.txt
     
 If you're on Windows using the Anaconda python distribution, you may run into issues installing the MarkupSafe package. If so, you can solve this issue by modifying `cygwinccompiler.py` as desribed here: [http://bugs.python.org/issue21821](http://bugs.python.org/issue21821)
