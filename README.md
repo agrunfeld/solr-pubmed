@@ -29,13 +29,16 @@ If you've already cloned the repository and you need to initialize the submodule
 
 Building
 ---------
+To build the project, run the following: 
 
     cd solr-pubmed
     mvn install
+    
+The build artifacts will be installed to your local maven repository (typically `~/.m2` on Unix systems or `C:\Documents and Settings\{your-username}\.m2` on Windows). 
 
 Running Tests
 -------------
-To execute all unit tests, use:
+To run all unit tests, run the following command in the project root directory:
 
     mvn test
 
