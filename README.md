@@ -12,6 +12,8 @@ Requirements
 
 [Anaconda](https://store.continuum.io/cshop/anaconda/) is an easy to install Python distribution that doesn’t require root or local admin privileges.
 
+If you use the default Python, make sure you have the python-dev package installed. It contains headers needed for building some of the Python packages.
+
 [virtualenv](https://virtualenv.pypa.io/en/latest/) is recommended for create isolated Python development environments.
 
 Get the code
